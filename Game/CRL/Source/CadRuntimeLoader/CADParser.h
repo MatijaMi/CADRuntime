@@ -27,6 +27,9 @@ public:
 		static FString LoadFileToString(FString Filename);
 
 	UFUNCTION(BlueprintCallable, Category = " File I/O")
+		static TArray<FString>  OpenFolder(FString Directory);
+
+	UFUNCTION(BlueprintCallable, Category = " File I/O")
 		static TArray<int> GetTriangleFromString(FString input);
 
 	UFUNCTION(BlueprintCallable, Category = " File I/O")

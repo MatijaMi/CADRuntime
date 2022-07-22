@@ -2,17 +2,43 @@
 
 
 #include "CADParser.h"
+#include "FFileMatch.h"
 
 FString UCADParser::LoadFileToString(FString Filename) {
-	FString directory = FPaths::ProjectContentDir();
+	FString directory;
+	FString name;
+	Filename.Split("\\",&directory, &name, ESearchCase::IgnoreCase, ESearchDir::FromEnd);
 	FString result;
 	IPlatformFile& file = FPlatformFileManager::Get().GetPlatformFile();
 
 	if (file.CreateDirectory(*directory)) {
-		FString myFile = directory + "/" + Filename;
+		FString myFile = directory + "\\" + name;
 		FFileHelper::LoadFileToString(result, *myFile);
 	}
 	return result;
+
+}
+
+TArray<FString> UCADParser::OpenFolder(FString Directory) {
+	FString result;
+	IPlatformFile& file = FPlatformFileManager::Get().GetPlatformFile();
+	TArray<FString> FolderContent;
+	TArray<FString> FilteredContent;
+	if (file.CreateDirectory(*Directory)) {
+		FFileMatch FileMatch(FolderContent, FString(".obj"), true, true);
+		file.IterateDirectory(*Directory, FileMatch);
+	}
+	for (auto& name : FolderContent) {
+		if (name.StartsWith("\\")) {
+			FilteredContent.Add(name);
+		}
+		else {
+			if (name.EndsWith(".obj")) {
+				FilteredContent.Add(name);
+			}
+		}
+	}
+	return FilteredContent;
 
 }
 
