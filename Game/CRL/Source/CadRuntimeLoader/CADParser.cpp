@@ -234,10 +234,16 @@ void UCADParser::GenerateMesh(AActor* Actor, FString File, UMaterialInterface* O
 
 void UCADParser::GenerateMeshSection(AActor* actor, int sectionId, TArray<FVector> vertices, TArray<int> triangles, UMaterialInterface* OpaqueMaterial, UMaterialInterface* TransMaterial, TArray<FString> Materials, TArray<float> MaterialValues, TArray<FString> MaterialNames, bool collision)
 {
-	URuntimeMeshComponentStatic* rmc = NewObject<URuntimeMeshComponentStatic>(actor);
+	UMyRuntimeMeshComponentStatic* rmc = NewObject<UMyRuntimeMeshComponentStatic>(actor);
+	rmc->SetIsReplicated(true);
 	rmc->AttachToComponent(actor->GetRootComponent(), FAttachmentTransformRules::KeepRelativeTransform);
 	rmc->RegisterComponent();
 	URuntimeMeshProviderStatic* StaticProvider = NewObject<URuntimeMeshProviderStatic>(rmc, FName("StaticProvider"));
+	FRuntimeMeshCollisionSettings CS;
+	CS.bUseAsyncCooking = true;
+	CS.bUseComplexAsSimple = true;
+	CS.CookingMode = ERuntimeMeshCollisionCookingMode::CookingPerformance;
+	StaticProvider->SetCollisionSettings(CS);
 	UMaterialInstanceDynamic* CustomMaterial;
 	int i;
 	if (MaterialNames.IndexOfByKey(Materials[sectionId]) != -1) {

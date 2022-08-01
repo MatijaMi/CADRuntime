@@ -6,6 +6,7 @@
 #include "Kismet/BlueprintFunctionLibrary.h"
 #include <Runtime\Core\Public\Misc\FileHelper.h>
 #include "Providers/RuntimeMeshProviderStatic.h"
+#include "MyRuntimeMeshComponentStatic.h"
 #include "Materials/MaterialInstanceDynamic.h"
 #include "Materials/MaterialInterface.h"
 #include "Components/RuntimeMeshComponentStatic.h"

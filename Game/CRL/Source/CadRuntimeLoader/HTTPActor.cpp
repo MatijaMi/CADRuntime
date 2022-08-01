@@ -46,12 +46,12 @@ void AHTTPActor::HttpUpload(FString URL, FString Content,FString type,FString Fi
 void AHTTPActor::POSTResponseReceived(FHttpRequestPtr Request, FHttpResponsePtr Response, bool bWasSuccessful)
 {
 	FString content = Response->GetContentAsString();
-	FileUploadCompleted = true;
-	
+	NotifyUploadDone();
 }
 
 void AHTTPActor::GETResponseReceived(FHttpRequestPtr Request, FHttpResponsePtr Response, bool bWasSuccessful)
 {
 	ResponseContent = Response->GetContentAsString();
-	FileDownloadCompleted = true;
+	ResponseURL = Response->GetURL();
+	NotifyDownloadDone();
 }

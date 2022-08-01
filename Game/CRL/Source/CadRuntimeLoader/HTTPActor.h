@@ -17,12 +17,12 @@ public:
 	FHttpModule* Http;
 	UPROPERTY(BlueprintReadOnly, Category ="HTTP")
 	FString ResponseContent;
-	UPROPERTY(BlueprintReadWrite, Category = "HTTP")
-		bool FileUploadCompleted;
-	UPROPERTY(BlueprintReadWrite, Category = "HTTP")
-		bool FileDownloadCompleted;
-
-
+	UPROPERTY(BlueprintReadOnly, Category = "HTTP")
+		FString ResponseURL;
+	UFUNCTION(BlueprintImplementableEvent)
+		void NotifyUploadDone();
+	UFUNCTION(BlueprintImplementableEvent)
+		void NotifyDownloadDone();
 
 	/* The actual HTTP call */
 	UFUNCTION(BlueprintCallable, Category = "HTTP")
