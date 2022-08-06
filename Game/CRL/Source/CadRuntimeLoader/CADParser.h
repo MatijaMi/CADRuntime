@@ -5,11 +5,6 @@
 #include "CoreMinimal.h"
 #include "Kismet/BlueprintFunctionLibrary.h"
 #include <Runtime\Core\Public\Misc\FileHelper.h>
-#include "Providers/RuntimeMeshProviderStatic.h"
-#include "MyRuntimeMeshComponentStatic.h"
-#include "Materials/MaterialInstanceDynamic.h"
-#include "Materials/MaterialInterface.h"
-#include "Components/RuntimeMeshComponentStatic.h"
 #include "Developer/DesktopPlatform/Public/IDesktopPlatform.h"
 #include "Developer/DesktopPlatform/Public/DesktopPlatformModule.h"
 #include "CADParser.generated.h"
@@ -31,20 +26,8 @@ public:
 		static TArray<FString>  OpenFolder(FString Directory);
 
 	UFUNCTION(BlueprintCallable, Category = " File I/O")
-		static TArray<int> GetTriangleFromString(FString input);
+		static TArray<FString> ParseOBJ(FString Input, TArray<FVector>& vertices, TArray<FVector2D>& textureCoords, TArray<FVector>& Normals);
 
 	UFUNCTION(BlueprintCallable, Category = " File I/O")
-		static TArray<FString> GetArraysFromString(FString Input, TArray<FVector>& vertices, TArray<FVector2D>& textureCoords, TArray<FVector>& Normals, TArray<FString>& materials);
-
-	UFUNCTION(BlueprintCallable, Category = " File I/O")
-		static void GenerateMesh(AActor* Actor, FString File, UMaterialInterface* OpaqueMaterial, UMaterialInterface* TransMaterial, bool collision);
-
-	UFUNCTION(BlueprintCallable, Category = " File I/O")
-		static void GenerateMeshSection(AActor* actor, int sectionId, TArray<FVector> vertices, TArray<int> triangles, UMaterialInterface* OpaqueMaterial, UMaterialInterface* TransMaterial, TArray<FString> Materials, TArray<float> MaterialValues, TArray<FString> MaterialNames, bool collision);
-
-	UFUNCTION(BlueprintCallable, Category = " File I/O")
-		static void GetDataForSection(FString trianglesIn, TArray < FVector> verticesIn, TArray<FVector>& vertices, TArray<int>& trianglesOut);
-
-	UFUNCTION(BlueprintCallable, Category = " File I/O")
-		static TArray<FString> getMaterialsFromString(FString input, TArray<float>& materialValues);
+		static TMap<FString, FString> ParseOBJMaterial(FString input);
 };

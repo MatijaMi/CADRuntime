@@ -17,4 +17,16 @@ public:
 	UPROPERTY(BlueprintReadWrite, Category = "RMC")
 		FString ComponentName;
 
+	UPROPERTY(BlueprintReadOnly, Category = "RMC")
+		TArray<FVector> Vertices;
+	UPROPERTY(BlueprintReadOnly, Category = "RMC")
+		int SectionId;
+
+	UPROPERTY(BlueprintReadOnly, Category = "RMC")
+		TArray<int> Faces;
+
+	UPROPERTY(BlueprintReadOnly, Category = "RMC")
+		TArray<UMaterialInstanceDynamic*> Material;
+
+
 };
