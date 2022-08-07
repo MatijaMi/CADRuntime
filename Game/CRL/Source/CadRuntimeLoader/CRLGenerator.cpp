@@ -57,7 +57,7 @@ void UCRLGenerator::GenerateMesh(AActor* Actor, FString File, UMaterialInterface
 	}
 }
 
-void UCRLGenerator::GenerateMeshSection(AActor* actor, int sectionId, TArray<FVector> Vertices, TArray<FString> Sections, UMaterialInterface* OpaqueMaterial, UMaterialInterface* TransMaterial, TMap<FString, FString> Materials, bool collision)
+void UCRLGenerator::GenerateMeshSection(AActor* actor, int sectionId, TArray<FVector> Vertices, TArray<FString> Sections, TArray<FVector2D> TextureCoords, TArray<FVector> Normals, UMaterialInterface* OpaqueMaterial, UMaterialInterface* TransMaterial, TMap<FString, FString> Materials, bool collision)
 {
 	UMyRuntimeMeshComponentStatic* RMC = NewObject<UMyRuntimeMeshComponentStatic>(actor);
 	RMC->AttachToComponent(actor->GetRootComponent(), FAttachmentTransformRules::KeepRelativeTransform);
@@ -107,7 +107,8 @@ void UCRLGenerator::GenerateMeshSection(AActor* actor, int sectionId, TArray<FVe
 			TArray<FVector2D> EmptyTexCoords;
 			TArray<FRuntimeMeshTangent> EmptyTangents;
 			RMC->SectionId = sectionId;
-			StaticProvider->CreateSectionFromComponents(0, i, i, Vertices, Faces, EmptyNormals, EmptyTexCoords, Colors, EmptyTangents, ERuntimeMeshUpdateFrequency::Infrequent, collision);
+			RMC->EnableNormalTangentGeneration();
+			StaticProvider->CreateSectionFromComponents(0, i, i, Vertices, Faces, EmptyNormals, TextureCoords, Colors, EmptyTangents, ERuntimeMeshUpdateFrequency::Infrequent, collision);
 		}
 }
 
