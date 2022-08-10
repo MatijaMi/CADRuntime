@@ -18,7 +18,7 @@ public:
 		FString ComponentName;
 
 	UPROPERTY(BlueprintReadOnly, Category = "RMC")
-		TArray<FVector> Vertices;
+		FVector MidVector;
 	UPROPERTY(BlueprintReadOnly, Category = "RMC")
 		int SectionId;
 
