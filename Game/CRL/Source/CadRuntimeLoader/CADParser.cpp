@@ -96,10 +96,10 @@ TArray<FString> UCADParser::ParseOBJ(FString Input, TArray<FVector>& Vertices, T
 	}
 	
 	for (auto& vertex : Vertices) {
-		vertex.X = -(2 * ((vertex.X - minX) / (maxX - minX)) - 1) * (500 * ((abs(maxX - minX)) / maxDiff));
-		vertex.Y = (2 * ((vertex.Y - minY) / (maxY - minY)) - 1) * (500 * ((abs(maxY - minY)) / maxDiff));
-		vertex.Z = (2 * ((vertex.Z - minZ) / (maxZ - minZ)) - 1) * (500 * ((abs(maxZ - minZ)) / maxDiff));
-		
+		//vertex.X = -vertex.X;
+		vertex.X = -(2 * ((vertex.X - minX) / (maxX - minX)) - 1) * (1000*(abs(maxX - minX) / maxDiff));
+		vertex.Y = (2 * ((vertex.Y - minY) / (maxY - minY)) - 1) * (1000 * (abs(maxY - minY) / maxDiff));
+		vertex.Z = (2 * ((vertex.Z - minZ) / (maxZ - minZ)) - 1) * (1000 * (abs(maxZ - minZ) / maxDiff));
 	}
 
 	Sections.Add(output);

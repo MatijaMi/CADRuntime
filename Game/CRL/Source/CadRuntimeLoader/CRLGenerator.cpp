@@ -60,10 +60,11 @@ void UCRLGenerator::GenerateMesh(AActor* Actor, FString File, UMaterialInterface
 void UCRLGenerator::GenerateMeshSection(AActor* actor, int sectionId, TArray<FVector> Vertices, TArray<FString> Sections, TArray<FVector2D> TextureCoords, TArray<FVector> Normals, UMaterialInterface* OpaqueMaterial, UMaterialInterface* TransMaterial, TMap<FString, FString> Materials, bool collision)
 {
 	UMyRuntimeMeshComponentStatic* RMC = NewObject<UMyRuntimeMeshComponentStatic>(actor);
+	RMC->SetIsReplicated(true);
 	RMC->AttachToComponent(actor->GetRootComponent(), FAttachmentTransformRules::KeepRelativeTransform);
 	RMC->RegisterComponent();
-	RMC->SetIsReplicated(true);
-	URuntimeMeshProviderStatic* StaticProvider = NewObject<URuntimeMeshProviderStatic>(RMC, FName("StaticProvider"));
+	
+		URuntimeMeshProviderStatic* StaticProvider = NewObject<URuntimeMeshProviderStatic>(RMC, FName("StaticProvider"));
 	FRuntimeMeshCollisionSettings CS;
 	CS.bUseAsyncCooking = true;
 	CS.bUseComplexAsSimple = true;
@@ -72,15 +73,20 @@ void UCRLGenerator::GenerateMeshSection(AActor* actor, int sectionId, TArray<FVe
 	
 	TArray<FString> SectionMaterials;
 	TArray<FString> Parts;
+	FString sep = " ";
+	TArray<FString> PartMaterialValues;
+	UMaterialInstanceDynamic* CustomMaterial;
+	TArray<FColor> Colors{ FColor::Blue, FColor::Red, FColor::Green };
+	TArray<FVector> EmptyNormals;
+	TArray<FRuntimeMeshTangent> EmptyTangents;
+	RMC->SectionId = sectionId;
+	RMC->EnableNormalTangentGeneration();
 	GetSectionParts(Sections[sectionId], SectionMaterials, Parts);
 	for (int i = 0; i < Parts.Num(); i++) {
 		TArray<int> Faces = GetFacesFromPart(Parts[i]);
 		if (SectionMaterials.Num() > 0) {
 			FString* PartMaterial = Materials.Find(SectionMaterials[i]);
 			if (PartMaterial != NULL) {
-				TArray<FString> PartMaterialValues;
-				UMaterialInstanceDynamic* CustomMaterial;
-				FString sep = " ";
 				PartMaterial->ParseIntoArray(PartMaterialValues, *sep);
 				if (FCString::Atof(*PartMaterialValues[3]) > 0.99) {
 					CustomMaterial = UMaterialInstanceDynamic::Create(OpaqueMaterial, RMC);
@@ -94,20 +100,13 @@ void UCRLGenerator::GenerateMeshSection(AActor* actor, int sectionId, TArray<FVe
 				float g = FCString::Atof(*PartMaterialValues[1]);
 				float b = FCString::Atof(*PartMaterialValues[2]);
 				CustomMaterial->SetVectorParameterValue("Colour", FLinearColor(r, g, b));
-				RMC->Material.Add(CustomMaterial);
 				StaticProvider->SetupMaterialSlot(i, FName(SectionMaterials[i]), CustomMaterial);
 			}
 			else {
 				StaticProvider->SetupMaterialSlot(i, FName("NoMaterial"), NULL);
-				RMC->Material.Add(NULL);
 			}
 		}
-			TArray<FColor> Colors{ FColor::Blue, FColor::Red, FColor::Green };
-			TArray<FVector> EmptyNormals;
-			TArray<FVector2D> EmptyTexCoords;
-			TArray<FRuntimeMeshTangent> EmptyTangents;
-			RMC->SectionId = sectionId;
-			RMC->EnableNormalTangentGeneration();
+			//RMC->SetVisibility(false, false);
 			StaticProvider->CreateSectionFromComponents(0, i, i, Vertices, Faces, EmptyNormals, TextureCoords, Colors, EmptyTangents, ERuntimeMeshUpdateFrequency::Infrequent, collision);
 		}
 }
