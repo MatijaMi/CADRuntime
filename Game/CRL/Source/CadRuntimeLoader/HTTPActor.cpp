@@ -46,6 +46,7 @@ void AHTTPActor::HttpUpload(FString URL, FString Content,FString type,FString Fi
 void AHTTPActor::POSTResponseReceived(FHttpRequestPtr Request, FHttpResponsePtr Response, bool bWasSuccessful)
 {
 	FString content = Response->GetContentAsString();
+	ResponseURL = Response->GetURL();
 	NotifyUploadDone();
 }
 
