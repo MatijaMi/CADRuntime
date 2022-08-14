@@ -19,6 +19,8 @@ public:
 	FString ResponseContent;
 	UPROPERTY(BlueprintReadOnly, Category = "HTTP")
 		FString ResponseURL;
+	UPROPERTY(BlueprintReadOnly, Category = "HTTP")
+		FString ResponseFileName;
 	UFUNCTION(BlueprintImplementableEvent)
 		void NotifyUploadDone();
 	UFUNCTION(BlueprintImplementableEvent)

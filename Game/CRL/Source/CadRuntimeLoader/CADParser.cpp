@@ -97,9 +97,9 @@ TArray<FString> UCADParser::ParseOBJ(FString Input, TArray<FVector>& Vertices, T
 	
 	for (auto& vertex : Vertices) {
 		//vertex.X = -vertex.X;
-		vertex.X = -(2 * ((vertex.X - minX) / (maxX - minX)) - 1) * (1000*(abs(maxX - minX) / maxDiff));
-		vertex.Y = (2 * ((vertex.Y - minY) / (maxY - minY)) - 1) * (1000 * (abs(maxY - minY) / maxDiff));
-		vertex.Z = (2 * ((vertex.Z - minZ) / (maxZ - minZ)) - 1) * (1000 * (abs(maxZ - minZ) / maxDiff));
+		vertex.X = -(2 * ((vertex.X - minX) / (maxX - minX)) - 1) * (2540*(abs(maxX - minX) / maxDiff));
+		vertex.Y = (2 * ((vertex.Y - minY) / (maxY - minY)) - 1) * (2540 * (abs(maxY - minY) / maxDiff));
+		vertex.Z = (2 * ((vertex.Z - minZ) / (maxZ - minZ)) - 1) * (2540 * (abs(maxZ - minZ) / maxDiff));
 	}
 
 	Sections.Add(output);
@@ -180,7 +180,7 @@ TArray<FString> UCADParser::OpenFolder(FString Directory) {
 			FilteredContent.Add(name);
 		}
 		else {
-			if (name.EndsWith(".obj")) {
+			if (name.EndsWith(".obj")|| name.EndsWith(".mtl")) {
 				FilteredContent.Add(name);
 			}
 		}

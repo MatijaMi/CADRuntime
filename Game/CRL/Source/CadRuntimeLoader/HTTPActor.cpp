@@ -46,6 +46,7 @@ void AHTTPActor::HttpUpload(FString URL, FString Content,FString type,FString Fi
 void AHTTPActor::POSTResponseReceived(FHttpRequestPtr Request, FHttpResponsePtr Response, bool bWasSuccessful)
 {
 	FString content = Response->GetContentAsString();
+	ResponseFileName = Response->GetHeader("FileName");
 	ResponseURL = Response->GetURL();
 	NotifyUploadDone();
 }
@@ -54,5 +55,6 @@ void AHTTPActor::GETResponseReceived(FHttpRequestPtr Request, FHttpResponsePtr R
 {
 	ResponseContent = Response->GetContentAsString();
 	ResponseURL = Response->GetURL();
+	ResponseFileName = Response->GetHeader("FileName");
 	NotifyDownloadDone();
 }
