@@ -89,7 +89,6 @@ void UCRLGenerator::GenerateMeshSection(AActor* actor, int sectionId, TArray<FVe
 	float maxZ = -FLT_MAX;
 	float minZ = FLT_MAX;
 
-			
 	for (int i = 0; i < Parts.Num(); i++) {
 		TArray<int> Faces = GetFacesFromPart(Parts[i]);
 		for (auto& num : Faces) {
@@ -103,6 +102,19 @@ void UCRLGenerator::GenerateMeshSection(AActor* actor, int sectionId, TArray<FVe
 			if (z > maxZ) { maxZ = z; }
 			if (z < minZ) { minZ = z; }
 		}
+	}
+	FVector Center = FVector((minX + maxX) / 2, (minY + maxY) / 2, (minZ + maxZ) / 2);
+	RMC->MidVector = Center;
+	RMC->SetRelativeLocation(Center);
+	int length = Vertices.Num();
+	
+	TArray<FVector> NormalizedVertices;
+	for (int i = 0; i < Vertices.Num(); i++) {
+		NormalizedVertices.Add(Vertices[i]-Center);
+	}
+	
+	for (int i = 0; i < Parts.Num(); i++) {
+		TArray<int> Faces = GetFacesFromPart(Parts[i]);
 		if (SectionMaterials.Num() > 0) {
 			FString* PartMaterial = Materials.Find(SectionMaterials[i]);
 			if (PartMaterial != NULL) {
@@ -126,9 +138,8 @@ void UCRLGenerator::GenerateMeshSection(AActor* actor, int sectionId, TArray<FVe
 			}
 		}
 			//RMC->SetVisibility(false, false);
-			StaticProvider->CreateSectionFromComponents(0, i, i, Vertices, Faces, EmptyNormals, TextureCoords, Colors, EmptyTangents, ERuntimeMeshUpdateFrequency::Infrequent, collision);
+			StaticProvider->CreateSectionFromComponents(0, i, i, NormalizedVertices, Faces, EmptyNormals, TextureCoords, Colors, EmptyTangents, ERuntimeMeshUpdateFrequency::Infrequent, collision);
 		}
-	RMC->MidVector = FVector((minX+maxX)/2, (minY + maxY) / 2,(minZ + maxZ) / 2);
 }
 
 void UCRLGenerator::GenerateMeshComponent(AActor* actor, TArray<FVector> vertices, TArray<int> triangles, UMaterialInstanceDynamic* Material, bool collision)
