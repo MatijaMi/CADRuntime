@@ -38,6 +38,7 @@ void AHTTPActor::HttpUpload(FString URL, FString Content,FString type,FString Fi
 	Request->SetHeader("Content-Type", type);
 	Request->SetHeader("FileName", FileName);
 	Request->SetHeader("ngrok-skip-browser-warning", "1");
+	Request->SetHeader("Bypass-Tunnel-Reminder", "1");
 	Request->SetContentAsStreamedFile(Content);
 	Request->ProcessRequest();
 
