@@ -26,8 +26,15 @@ public:
 		static TArray<FString>  OpenFolder(FString Directory);
 
 	UFUNCTION(BlueprintCallable, Category = " File I/O")
+		static TArray<FString> ParseFile(FString Input, TArray<FVector>& vertices, TArray<FVector2D>& textureCoords, TArray<FVector>& Normals);
+
+	UFUNCTION(BlueprintCallable, Category = " File I/O")
 		static TArray<FString> ParseOBJ(FString Input, TArray<FVector>& vertices, TArray<FVector2D>& textureCoords, TArray<FVector>& Normals);
 
 	UFUNCTION(BlueprintCallable, Category = " File I/O")
 		static TMap<FString, FString> ParseOBJMaterial(FString input);
+
+	UFUNCTION(BlueprintCallable, Category = " File I/O")
+		static TArray<FString> ParseSTL(FString Input, TArray<FVector>& vertices, TArray<FVector2D>& textureCoords, TArray<FVector>& Normals);
+
 };

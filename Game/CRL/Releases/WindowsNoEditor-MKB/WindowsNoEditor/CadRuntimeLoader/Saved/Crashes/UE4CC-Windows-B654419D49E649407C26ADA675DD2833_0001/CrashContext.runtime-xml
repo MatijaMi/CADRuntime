@@ -1,0 +1,933 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<FGenericCrashContext>
+<RuntimeProperties>
+<CrashVersion>3</CrashVersion>
+<ExecutionGuid>F6B31BA54794A06090702280B0B04F24</ExecutionGuid>
+<CrashGUID>UE4CC-Windows-B654419D49E649407C26ADA675DD2833_0001</CrashGUID>
+<IsEnsure>false</IsEnsure>
+<IsAssert>true</IsAssert>
+<CrashType>Assert</CrashType>
+<ErrorMessage>Assertion failed: IsValid() [File:D:\UnrealEngine\Engine\Source\Runtime\Core\Public\Templates/SharedPointer.h] [Line: 890] 
+
+</ErrorMessage>
+<CrashReporterMessage></CrashReporterMessage>
+<ProcessId>5944</ProcessId>
+<SecondsSinceStart>10</SecondsSinceStart>
+<IsInternalBuild>false</IsInternalBuild>
+<IsPerforceBuild>false</IsPerforceBuild>
+<IsSourceDistribution>false</IsSourceDistribution>
+<GameName>UE4-CadRuntimeLoader</GameName>
+<ExecutableName>CadRuntimeLoader</ExecutableName>
+<BuildConfiguration>Development</BuildConfiguration>
+<GameSessionID></GameSessionID>
+<Symbols>**UE4*Release-4.27-CL-0-Win64-Development</Symbols>
+<PlatformName>WindowsNoEditor</PlatformName>
+<PlatformNameIni>Windows</PlatformNameIni>
+<EngineMode>Game</EngineMode>
+<EngineModeEx>Unset</EngineModeEx>
+<DeploymentName></DeploymentName>
+<EngineVersion>4.27.2-0+++UE4+Release-4.27</EngineVersion>
+<CommandLine> CadRuntimeLoader</CommandLine>
+<LanguageLCID>0</LanguageLCID>
+<AppDefaultLocale>en-GB</AppDefaultLocale>
+<BuildVersion>++UE4+Release-4.27-CL-0</BuildVersion>
+<IsUE4Release>false</IsUE4Release>
+<IsRequestingExit>false</IsRequestingExit>
+<UserName></UserName>
+<BaseDir>D:/Unreal Projects/CadRuntimeLoader/Game/CRL/Releases/WindowsNoEditor-MKB/WindowsNoEditor/CadRuntimeLoader/Binaries/Win64/</BaseDir>
+<RootDir>D:/Unreal Projects/CadRuntimeLoader/Game/CRL/Releases/WindowsNoEditor-MKB/WindowsNoEditor/</RootDir>
+<MachineId>54FABBEB4A52CED07304AF8240A115AB</MachineId>
+<LoginId>54fabbeb4a52ced07304af8240a115ab</LoginId>
+<EpicAccountId>eb260014546c462ca521dbb3b8aa0bc9</EpicAccountId>
+<SourceContext></SourceContext>
+<UserDescription></UserDescription>
+<UserActivityHint></UserActivityHint>
+<CrashDumpMode>0</CrashDumpMode>
+<GameStateName></GameStateName>
+<Misc.NumberOfCores>4</Misc.NumberOfCores>
+<Misc.NumberOfCoresIncludingHyperthreads>8</Misc.NumberOfCoresIncludingHyperthreads>
+<Misc.Is64bitOperatingSystem>1</Misc.Is64bitOperatingSystem>
+<Misc.CPUVendor>AuthenticAMD</Misc.CPUVendor>
+<Misc.CPUBrand>AMD Ryzen 5 1500X Quad-Core Processor          </Misc.CPUBrand>
+<Misc.PrimaryGPUBrand>Radeon (TM) RX 470 Graphics</Misc.PrimaryGPUBrand>
+<Misc.OSVersionMajor>Windows 10 (Release 2009)</Misc.OSVersionMajor>
+<Misc.OSVersionMinor></Misc.OSVersionMinor>
+<MemoryStats.TotalPhysical>17129041920</MemoryStats.TotalPhysical>
+<MemoryStats.TotalVirtual>140737488224256</MemoryStats.TotalVirtual>
+<MemoryStats.PageSize>4096</MemoryStats.PageSize>
+<MemoryStats.TotalPhysicalGB>16</MemoryStats.TotalPhysicalGB>
+<MemoryStats.AvailablePhysical>7477727232</MemoryStats.AvailablePhysical>
+<MemoryStats.AvailableVirtual>10916499456</MemoryStats.AvailableVirtual>
+<MemoryStats.UsedPhysical>296660992</MemoryStats.UsedPhysical>
+<MemoryStats.PeakUsedPhysical>301563904</MemoryStats.PeakUsedPhysical>
+<MemoryStats.UsedVirtual>883023872</MemoryStats.UsedVirtual>
+<MemoryStats.PeakUsedVirtual>894091264</MemoryStats.PeakUsedVirtual>
+<MemoryStats.bIsOOM>0</MemoryStats.bIsOOM>
+<MemoryStats.OOMAllocationSize>0</MemoryStats.OOMAllocationSize>
+<MemoryStats.OOMAllocationAlignment>0</MemoryStats.OOMAllocationAlignment>
+<NumMinidumpFramesToIgnore>4</NumMinidumpFramesToIgnore>
+<CallStack></CallStack>
+<PCallStack>
+CadRuntimeLoader  0x00007ff6e3350000 + 1cf2c3b         
+CadRuntimeLoader  0x00007ff6e3350000 + 1cf4420         
+CadRuntimeLoader  0x00007ff6e3350000 + 1adb335         
+CadRuntimeLoader  0x00007ff6e3350000 + 1adb212         
+CadRuntimeLoader  0x00007ff6e3350000 + 24c0f24         
+CadRuntimeLoader  0x00007ff6e3350000 + 24d2087         
+CadRuntimeLoader  0x00007ff6e3350000 + 24e5a5a         
+CadRuntimeLoader  0x00007ff6e3350000 + 1adb609         
+CadRuntimeLoader  0x00007ff6e3350000 + 1ade5a0         
+CadRuntimeLoader  0x00007ff6e3350000 + 21ca589         
+CadRuntimeLoader  0x00007ff6e3350000 + 2439fe9         
+CadRuntimeLoader  0x00007ff6e3350000 + 245a8f5         
+CadRuntimeLoader  0x00007ff6e3350000 + 245d602         
+CadRuntimeLoader  0x00007ff6e3350000 + 243017a         
+CadRuntimeLoader  0x00007ff6e3350000 + 245d074         
+CadRuntimeLoader  0x00007ff6e3350000 + 245d602         
+CadRuntimeLoader  0x00007ff6e3350000 + 245c921         
+CadRuntimeLoader  0x00007ff6e3350000 + 243017a         
+CadRuntimeLoader  0x00007ff6e3350000 + 243a249         
+CadRuntimeLoader  0x00007ff6e3350000 + 245d602         
+CadRuntimeLoader  0x00007ff6e3350000 + 243017a         
+CadRuntimeLoader  0x00007ff6e3350000 + 245d074         
+CadRuntimeLoader  0x00007ff6e3350000 + 245d602         
+CadRuntimeLoader  0x00007ff6e3350000 + 245c921         
+CadRuntimeLoader  0x00007ff6e3350000 + 243017a         
+CadRuntimeLoader  0x00007ff6e3350000 + 243a249         
+CadRuntimeLoader  0x00007ff6e3350000 + 245a8f5         
+CadRuntimeLoader  0x00007ff6e3350000 + 245d602         
+CadRuntimeLoader  0x00007ff6e3350000 + 243017a         
+CadRuntimeLoader  0x00007ff6e3350000 + 245d074         
+CadRuntimeLoader  0x00007ff6e3350000 + 245d602         
+CadRuntimeLoader  0x00007ff6e3350000 + 243017a         
+CadRuntimeLoader  0x00007ff6e3350000 + 245d074         
+CadRuntimeLoader  0x00007ff6e3350000 + 245d602         
+CadRuntimeLoader  0x00007ff6e3350000 + 245c921         
+CadRuntimeLoader  0x00007ff6e3350000 + 21ca589         
+CadRuntimeLoader  0x00007ff6e3350000 + 245c337         
+CadRuntimeLoader  0x00007ff6e3350000 + c5c9c1          
+CadRuntimeLoader  0x00007ff6e3350000 + 4de2ce7         
+CadRuntimeLoader  0x00007ff6e3350000 + 4d664cd         
+CadRuntimeLoader  0x00007ff6e3350000 + 282d7e7         
+CadRuntimeLoader  0x00007ff6e3350000 + 2848d96         
+CadRuntimeLoader  0x00007ff6e3350000 + 26e1674         
+CadRuntimeLoader  0x00007ff6e3350000 + 2739c49         
+CadRuntimeLoader  0x00007ff6e3350000 + 2726c97         
+CadRuntimeLoader  0x00007ff6e3350000 + 271bf6c         
+CadRuntimeLoader  0x00007ff6e3350000 + 256c849         
+CadRuntimeLoader  0x00007ff6e3350000 + 2559ba4         
+CadRuntimeLoader  0x00007ff6e3350000 + 256ec6d         
+CadRuntimeLoader  0x00007ff6e3350000 + 2554db9         
+USER32            0x00007ffa8ef80000 + e858            
+USER32            0x00007ffa8ef80000 + e299            
+CadRuntimeLoader  0x00007ff6e3350000 + 2570234         
+CadRuntimeLoader  0x00007ff6e3350000 + 99d96d          
+CadRuntimeLoader  0x00007ff6e3350000 + 9b4d9c          
+CadRuntimeLoader  0x00007ff6e3350000 + 9b4e6a          
+CadRuntimeLoader  0x00007ff6e3350000 + 9b72bc          
+CadRuntimeLoader  0x00007ff6e3350000 + 9c8e54          
+CadRuntimeLoader  0x00007ff6e3350000 + 72bc09e         
+KERNEL32          0x00007ffa8f230000 + 17034           
+ntdll             0x00007ffa8f470000 + 52651           
+</PCallStack>
+<PCallStackHash>528466A9ADFB048DDB38FE84ECA1C80335F1406F</PCallStackHash>
+<Threads><Thread><CallStack>ntdll             0x00007ffa8f470000 + 9cfc4           
+KERNELBASE        0x00007ffa8d200000 + 21ace           
+CadRuntimeLoader  0x00007ff6e3350000 + 2042fad         
+CadRuntimeLoader  0x00007ff6e3350000 + 72c82ee         
+VCRUNTIME140      0x00007ffa79b20000 + eff0            
+ntdll             0x00007ffa8f470000 + a229f           
+ntdll             0x00007ffa8f470000 + 51454           
+ntdll             0x00007ffa8f470000 + 511a5           
+KERNELBASE        0x00007ffa8d200000 + 34fd9           
+CadRuntimeLoader  0x00007ff6e3350000 + 2042ef6         
+CadRuntimeLoader  0x00007ff6e3350000 + 2047188         
+CadRuntimeLoader  0x00007ff6e3350000 + 1d9646d         
+CadRuntimeLoader  0x00007ff6e3350000 + 1cf2c3b         
+CadRuntimeLoader  0x00007ff6e3350000 + 1cf4420         
+CadRuntimeLoader  0x00007ff6e3350000 + 1adb335         
+CadRuntimeLoader  0x00007ff6e3350000 + 1adb212         
+CadRuntimeLoader  0x00007ff6e3350000 + 24c0f24         
+CadRuntimeLoader  0x00007ff6e3350000 + 24d2087         
+CadRuntimeLoader  0x00007ff6e3350000 + 24e5a5a         
+CadRuntimeLoader  0x00007ff6e3350000 + 1adb609         
+CadRuntimeLoader  0x00007ff6e3350000 + 1ade5a0         
+CadRuntimeLoader  0x00007ff6e3350000 + 21ca589         
+CadRuntimeLoader  0x00007ff6e3350000 + 2439fe9         
+CadRuntimeLoader  0x00007ff6e3350000 + 245a8f5         
+CadRuntimeLoader  0x00007ff6e3350000 + 245d602         
+CadRuntimeLoader  0x00007ff6e3350000 + 243017a         
+CadRuntimeLoader  0x00007ff6e3350000 + 245d074         
+CadRuntimeLoader  0x00007ff6e3350000 + 245d602         
+CadRuntimeLoader  0x00007ff6e3350000 + 245c921         
+CadRuntimeLoader  0x00007ff6e3350000 + 243017a         
+CadRuntimeLoader  0x00007ff6e3350000 + 243a249         
+CadRuntimeLoader  0x00007ff6e3350000 + 245d602         
+CadRuntimeLoader  0x00007ff6e3350000 + 243017a         
+CadRuntimeLoader  0x00007ff6e3350000 + 245d074         
+CadRuntimeLoader  0x00007ff6e3350000 + 245d602         
+CadRuntimeLoader  0x00007ff6e3350000 + 245c921         
+CadRuntimeLoader  0x00007ff6e3350000 + 243017a         
+CadRuntimeLoader  0x00007ff6e3350000 + 243a249         
+CadRuntimeLoader  0x00007ff6e3350000 + 245a8f5         
+CadRuntimeLoader  0x00007ff6e3350000 + 245d602         
+CadRuntimeLoader  0x00007ff6e3350000 + 243017a         
+CadRuntimeLoader  0x00007ff6e3350000 + 245d074         
+CadRuntimeLoader  0x00007ff6e3350000 + 245d602         
+CadRuntimeLoader  0x00007ff6e3350000 + 243017a         
+CadRuntimeLoader  0x00007ff6e3350000 + 245d074         
+CadRuntimeLoader  0x00007ff6e3350000 + 245d602         
+CadRuntimeLoader  0x00007ff6e3350000 + 245c921         
+CadRuntimeLoader  0x00007ff6e3350000 + 21ca589         
+CadRuntimeLoader  0x00007ff6e3350000 + 245c337         
+CadRuntimeLoader  0x00007ff6e3350000 + c5c9c1          
+CadRuntimeLoader  0x00007ff6e3350000 + 4de2ce7         
+CadRuntimeLoader  0x00007ff6e3350000 + 4d664cd         
+CadRuntimeLoader  0x00007ff6e3350000 + 282d7e7         
+CadRuntimeLoader  0x00007ff6e3350000 + 2848d96         
+CadRuntimeLoader  0x00007ff6e3350000 + 26e1674         
+CadRuntimeLoader  0x00007ff6e3350000 + 2739c49         
+CadRuntimeLoader  0x00007ff6e3350000 + 2726c97         
+CadRuntimeLoader  0x00007ff6e3350000 + 271bf6c         
+CadRuntimeLoader  0x00007ff6e3350000 + 256c849         
+CadRuntimeLoader  0x00007ff6e3350000 + 2559ba4         
+CadRuntimeLoader  0x00007ff6e3350000 + 256ec6d         
+CadRuntimeLoader  0x00007ff6e3350000 + 2554db9         
+USER32            0x00007ffa8ef80000 + e858            
+USER32            0x00007ffa8ef80000 + e299            
+CadRuntimeLoader  0x00007ff6e3350000 + 2570234         
+CadRuntimeLoader  0x00007ff6e3350000 + 99d96d          
+CadRuntimeLoader  0x00007ff6e3350000 + 9b4d9c          
+CadRuntimeLoader  0x00007ff6e3350000 + 9b4e6a          
+CadRuntimeLoader  0x00007ff6e3350000 + 9b72bc          
+CadRuntimeLoader  0x00007ff6e3350000 + 9c8e54          
+CadRuntimeLoader  0x00007ff6e3350000 + 72bc09e         
+KERNEL32          0x00007ffa8f230000 + 17034           
+ntdll             0x00007ffa8f470000 + 52651           
+</CallStack>
+<IsCrashed>true</IsCrashed>
+<Registers></Registers>
+<ThreadID>15892</ThreadID>
+<ThreadName>GameThread</ThreadName>
+</Thread>
+<Thread><CallStack>ntdll             0x00007ffa8f470000 + 9cfc4           
+KERNELBASE        0x00007ffa8d200000 + 21ace           
+CadRuntimeLoader  0x00007ff6e3350000 + 2068e16         
+CadRuntimeLoader  0x00007ff6e3350000 + 1b2bb93         
+CadRuntimeLoader  0x00007ff6e3350000 + 1b2d180         
+CadRuntimeLoader  0x00007ff6e3350000 + 1b32e55         
+CadRuntimeLoader  0x00007ff6e3350000 + 20652bb         
+CadRuntimeLoader  0x00007ff6e3350000 + 205b560         
+KERNEL32          0x00007ffa8f230000 + 17034           
+ntdll             0x00007ffa8f470000 + 52651           
+</CallStack>
+<IsCrashed>false</IsCrashed>
+<Registers></Registers>
+<ThreadID>17348</ThreadID>
+<ThreadName>TaskGraphThreadNP 0</ThreadName>
+</Thread>
+<Thread><CallStack>ntdll             0x00007ffa8f470000 + 9cfc4           
+KERNELBASE        0x00007ffa8d200000 + 21ace           
+CadRuntimeLoader  0x00007ff6e3350000 + 2068e16         
+CadRuntimeLoader  0x00007ff6e3350000 + 1b2bb93         
+CadRuntimeLoader  0x00007ff6e3350000 + 1b2d180         
+CadRuntimeLoader  0x00007ff6e3350000 + 1b32e55         
+CadRuntimeLoader  0x00007ff6e3350000 + 20652bb         
+CadRuntimeLoader  0x00007ff6e3350000 + 205b560         
+KERNEL32          0x00007ffa8f230000 + 17034           
+ntdll             0x00007ffa8f470000 + 52651           
+</CallStack>
+<IsCrashed>false</IsCrashed>
+<Registers></Registers>
+<ThreadID>13176</ThreadID>
+<ThreadName>TaskGraphThreadNP 1</ThreadName>
+</Thread>
+<Thread><CallStack>ntdll             0x00007ffa8f470000 + 9cfc4           
+KERNELBASE        0x00007ffa8d200000 + 21ace           
+CadRuntimeLoader  0x00007ff6e3350000 + 2068e16         
+CadRuntimeLoader  0x00007ff6e3350000 + 1b2bb93         
+CadRuntimeLoader  0x00007ff6e3350000 + 1b2d180         
+CadRuntimeLoader  0x00007ff6e3350000 + 1b32e55         
+CadRuntimeLoader  0x00007ff6e3350000 + 20652bb         
+CadRuntimeLoader  0x00007ff6e3350000 + 205b560         
+KERNEL32          0x00007ffa8f230000 + 17034           
+ntdll             0x00007ffa8f470000 + 52651           
+</CallStack>
+<IsCrashed>false</IsCrashed>
+<Registers></Registers>
+<ThreadID>16748</ThreadID>
+<ThreadName>TaskGraphThreadNP 2</ThreadName>
+</Thread>
+<Thread><CallStack>ntdll             0x00007ffa8f470000 + 9cfc4           
+KERNELBASE        0x00007ffa8d200000 + 21ace           
+CadRuntimeLoader  0x00007ff6e3350000 + 2068e16         
+CadRuntimeLoader  0x00007ff6e3350000 + 1b2bb93         
+CadRuntimeLoader  0x00007ff6e3350000 + 1b2d180         
+CadRuntimeLoader  0x00007ff6e3350000 + 1b32e55         
+CadRuntimeLoader  0x00007ff6e3350000 + 20652bb         
+CadRuntimeLoader  0x00007ff6e3350000 + 205b560         
+KERNEL32          0x00007ffa8f230000 + 17034           
+ntdll             0x00007ffa8f470000 + 52651           
+</CallStack>
+<IsCrashed>false</IsCrashed>
+<Registers></Registers>
+<ThreadID>4184</ThreadID>
+<ThreadName>TaskGraphThreadNP 3</ThreadName>
+</Thread>
+<Thread><CallStack>ntdll             0x00007ffa8f470000 + 9cfc4           
+KERNELBASE        0x00007ffa8d200000 + 21ace           
+CadRuntimeLoader  0x00007ff6e3350000 + 2068e16         
+CadRuntimeLoader  0x00007ff6e3350000 + 1b2bb93         
+CadRuntimeLoader  0x00007ff6e3350000 + 1b2d180         
+CadRuntimeLoader  0x00007ff6e3350000 + 1b32e55         
+CadRuntimeLoader  0x00007ff6e3350000 + 20652bb         
+CadRuntimeLoader  0x00007ff6e3350000 + 205b560         
+KERNEL32          0x00007ffa8f230000 + 17034           
+ntdll             0x00007ffa8f470000 + 52651           
+</CallStack>
+<IsCrashed>false</IsCrashed>
+<Registers></Registers>
+<ThreadID>7292</ThreadID>
+<ThreadName>TaskGraphThreadNP 4</ThreadName>
+</Thread>
+<Thread><CallStack>ntdll             0x00007ffa8f470000 + 9cfc4           
+KERNELBASE        0x00007ffa8d200000 + 21ace           
+CadRuntimeLoader  0x00007ff6e3350000 + 2068e16         
+CadRuntimeLoader  0x00007ff6e3350000 + 1b2bb93         
+CadRuntimeLoader  0x00007ff6e3350000 + 1b2d180         
+CadRuntimeLoader  0x00007ff6e3350000 + 1b32e55         
+CadRuntimeLoader  0x00007ff6e3350000 + 20652bb         
+CadRuntimeLoader  0x00007ff6e3350000 + 205b560         
+KERNEL32          0x00007ffa8f230000 + 17034           
+ntdll             0x00007ffa8f470000 + 52651           
+</CallStack>
+<IsCrashed>false</IsCrashed>
+<Registers></Registers>
+<ThreadID>12056</ThreadID>
+<ThreadName>TaskGraphThreadNP 5</ThreadName>
+</Thread>
+<Thread><CallStack>ntdll             0x00007ffa8f470000 + 9cfc4           
+KERNELBASE        0x00007ffa8d200000 + 21ace           
+CadRuntimeLoader  0x00007ff6e3350000 + 2068e16         
+CadRuntimeLoader  0x00007ff6e3350000 + 1b2bb93         
+CadRuntimeLoader  0x00007ff6e3350000 + 1b2d180         
+CadRuntimeLoader  0x00007ff6e3350000 + 1b32e55         
+CadRuntimeLoader  0x00007ff6e3350000 + 20652bb         
+CadRuntimeLoader  0x00007ff6e3350000 + 205b560         
+KERNEL32          0x00007ffa8f230000 + 17034           
+ntdll             0x00007ffa8f470000 + 52651           
+</CallStack>
+<IsCrashed>false</IsCrashed>
+<Registers></Registers>
+<ThreadID>15776</ThreadID>
+<ThreadName>TaskGraphThreadHP 6</ThreadName>
+</Thread>
+<Thread><CallStack>ntdll             0x00007ffa8f470000 + 9cfc4           
+KERNELBASE        0x00007ffa8d200000 + 21ace           
+CadRuntimeLoader  0x00007ff6e3350000 + 2068e16         
+CadRuntimeLoader  0x00007ff6e3350000 + 1b2bb93         
+CadRuntimeLoader  0x00007ff6e3350000 + 1b2d180         
+CadRuntimeLoader  0x00007ff6e3350000 + 1b32e55         
+CadRuntimeLoader  0x00007ff6e3350000 + 20652bb         
+CadRuntimeLoader  0x00007ff6e3350000 + 205b560         
+KERNEL32          0x00007ffa8f230000 + 17034           
+ntdll             0x00007ffa8f470000 + 52651           
+</CallStack>
+<IsCrashed>false</IsCrashed>
+<Registers></Registers>
+<ThreadID>16668</ThreadID>
+<ThreadName>TaskGraphThreadHP 7</ThreadName>
+</Thread>
+<Thread><CallStack>ntdll             0x00007ffa8f470000 + 9cfc4           
+KERNELBASE        0x00007ffa8d200000 + 21ace           
+CadRuntimeLoader  0x00007ff6e3350000 + 2068e16         
+CadRuntimeLoader  0x00007ff6e3350000 + 1b2bb93         
+CadRuntimeLoader  0x00007ff6e3350000 + 1b2d180         
+CadRuntimeLoader  0x00007ff6e3350000 + 1b32e55         
+CadRuntimeLoader  0x00007ff6e3350000 + 20652bb         
+CadRuntimeLoader  0x00007ff6e3350000 + 205b560         
+KERNEL32          0x00007ffa8f230000 + 17034           
+ntdll             0x00007ffa8f470000 + 52651           
+</CallStack>
+<IsCrashed>false</IsCrashed>
+<Registers></Registers>
+<ThreadID>14480</ThreadID>
+<ThreadName>TaskGraphThreadHP 8</ThreadName>
+</Thread>
+<Thread><CallStack>ntdll             0x00007ffa8f470000 + 9cfc4           
+KERNELBASE        0x00007ffa8d200000 + 21ace           
+CadRuntimeLoader  0x00007ff6e3350000 + 2068e16         
+CadRuntimeLoader  0x00007ff6e3350000 + 1b2bb93         
+CadRuntimeLoader  0x00007ff6e3350000 + 1b2d180         
+CadRuntimeLoader  0x00007ff6e3350000 + 1b32e55         
+CadRuntimeLoader  0x00007ff6e3350000 + 20652bb         
+CadRuntimeLoader  0x00007ff6e3350000 + 205b560         
+KERNEL32          0x00007ffa8f230000 + 17034           
+ntdll             0x00007ffa8f470000 + 52651           
+</CallStack>
+<IsCrashed>false</IsCrashed>
+<Registers></Registers>
+<ThreadID>18908</ThreadID>
+<ThreadName>TaskGraphThreadHP 9</ThreadName>
+</Thread>
+<Thread><CallStack>ntdll             0x00007ffa8f470000 + 9cfc4           
+KERNELBASE        0x00007ffa8d200000 + 21ace           
+CadRuntimeLoader  0x00007ff6e3350000 + 2068e16         
+CadRuntimeLoader  0x00007ff6e3350000 + 1b2bb93         
+CadRuntimeLoader  0x00007ff6e3350000 + 1b2d180         
+CadRuntimeLoader  0x00007ff6e3350000 + 1b32e55         
+CadRuntimeLoader  0x00007ff6e3350000 + 20652bb         
+CadRuntimeLoader  0x00007ff6e3350000 + 205b560         
+KERNEL32          0x00007ffa8f230000 + 17034           
+ntdll             0x00007ffa8f470000 + 52651           
+</CallStack>
+<IsCrashed>false</IsCrashed>
+<Registers></Registers>
+<ThreadID>12732</ThreadID>
+<ThreadName>TaskGraphThreadHP 10</ThreadName>
+</Thread>
+<Thread><CallStack>ntdll             0x00007ffa8f470000 + 9cfc4           
+KERNELBASE        0x00007ffa8d200000 + 21ace           
+CadRuntimeLoader  0x00007ff6e3350000 + 2068e16         
+CadRuntimeLoader  0x00007ff6e3350000 + 1b2bb93         
+CadRuntimeLoader  0x00007ff6e3350000 + 1b2d180         
+CadRuntimeLoader  0x00007ff6e3350000 + 1b32e55         
+CadRuntimeLoader  0x00007ff6e3350000 + 20652bb         
+CadRuntimeLoader  0x00007ff6e3350000 + 205b560         
+KERNEL32          0x00007ffa8f230000 + 17034           
+ntdll             0x00007ffa8f470000 + 52651           
+</CallStack>
+<IsCrashed>false</IsCrashed>
+<Registers></Registers>
+<ThreadID>17808</ThreadID>
+<ThreadName>TaskGraphThreadHP 11</ThreadName>
+</Thread>
+<Thread><CallStack>ntdll             0x00007ffa8f470000 + 9cfc4           
+KERNELBASE        0x00007ffa8d200000 + 21ace           
+CadRuntimeLoader  0x00007ff6e3350000 + 2068e16         
+CadRuntimeLoader  0x00007ff6e3350000 + 1b2bb93         
+CadRuntimeLoader  0x00007ff6e3350000 + 1b2d180         
+CadRuntimeLoader  0x00007ff6e3350000 + 1b32e55         
+CadRuntimeLoader  0x00007ff6e3350000 + 20652bb         
+CadRuntimeLoader  0x00007ff6e3350000 + 205b560         
+KERNEL32          0x00007ffa8f230000 + 17034           
+ntdll             0x00007ffa8f470000 + 52651           
+</CallStack>
+<IsCrashed>false</IsCrashed>
+<Registers></Registers>
+<ThreadID>7232</ThreadID>
+<ThreadName>TaskGraphThreadBP 12</ThreadName>
+</Thread>
+<Thread><CallStack>ntdll             0x00007ffa8f470000 + 9cfc4           
+KERNELBASE        0x00007ffa8d200000 + 21ace           
+CadRuntimeLoader  0x00007ff6e3350000 + 2068e16         
+CadRuntimeLoader  0x00007ff6e3350000 + 1b2bb93         
+CadRuntimeLoader  0x00007ff6e3350000 + 1b2d180         
+CadRuntimeLoader  0x00007ff6e3350000 + 1b32e55         
+CadRuntimeLoader  0x00007ff6e3350000 + 20652bb         
+CadRuntimeLoader  0x00007ff6e3350000 + 205b560         
+KERNEL32          0x00007ffa8f230000 + 17034           
+ntdll             0x00007ffa8f470000 + 52651           
+</CallStack>
+<IsCrashed>false</IsCrashed>
+<Registers></Registers>
+<ThreadID>12888</ThreadID>
+<ThreadName>TaskGraphThreadBP 13</ThreadName>
+</Thread>
+<Thread><CallStack>ntdll             0x00007ffa8f470000 + 9cfc4           
+KERNELBASE        0x00007ffa8d200000 + 21ace           
+CadRuntimeLoader  0x00007ff6e3350000 + 2068e16         
+CadRuntimeLoader  0x00007ff6e3350000 + 1b2bb93         
+CadRuntimeLoader  0x00007ff6e3350000 + 1b2d180         
+CadRuntimeLoader  0x00007ff6e3350000 + 1b32e55         
+CadRuntimeLoader  0x00007ff6e3350000 + 20652bb         
+CadRuntimeLoader  0x00007ff6e3350000 + 205b560         
+KERNEL32          0x00007ffa8f230000 + 17034           
+ntdll             0x00007ffa8f470000 + 52651           
+</CallStack>
+<IsCrashed>false</IsCrashed>
+<Registers></Registers>
+<ThreadID>6264</ThreadID>
+<ThreadName>TaskGraphThreadBP 14</ThreadName>
+</Thread>
+<Thread><CallStack>ntdll             0x00007ffa8f470000 + 9cfc4           
+KERNELBASE        0x00007ffa8d200000 + 21ace           
+CadRuntimeLoader  0x00007ff6e3350000 + 2068e16         
+CadRuntimeLoader  0x00007ff6e3350000 + 1b2bb93         
+CadRuntimeLoader  0x00007ff6e3350000 + 1b2d180         
+CadRuntimeLoader  0x00007ff6e3350000 + 1b32e55         
+CadRuntimeLoader  0x00007ff6e3350000 + 20652bb         
+CadRuntimeLoader  0x00007ff6e3350000 + 205b560         
+KERNEL32          0x00007ffa8f230000 + 17034           
+ntdll             0x00007ffa8f470000 + 52651           
+</CallStack>
+<IsCrashed>false</IsCrashed>
+<Registers></Registers>
+<ThreadID>7256</ThreadID>
+<ThreadName>TaskGraphThreadBP 15</ThreadName>
+</Thread>
+<Thread><CallStack>ntdll             0x00007ffa8f470000 + 9cfc4           
+KERNELBASE        0x00007ffa8d200000 + 21ace           
+CadRuntimeLoader  0x00007ff6e3350000 + 2068e16         
+CadRuntimeLoader  0x00007ff6e3350000 + 1b2bb93         
+CadRuntimeLoader  0x00007ff6e3350000 + 1b2d180         
+CadRuntimeLoader  0x00007ff6e3350000 + 1b32e55         
+CadRuntimeLoader  0x00007ff6e3350000 + 20652bb         
+CadRuntimeLoader  0x00007ff6e3350000 + 205b560         
+KERNEL32          0x00007ffa8f230000 + 17034           
+ntdll             0x00007ffa8f470000 + 52651           
+</CallStack>
+<IsCrashed>false</IsCrashed>
+<Registers></Registers>
+<ThreadID>16016</ThreadID>
+<ThreadName>TaskGraphThreadBP 16</ThreadName>
+</Thread>
+<Thread><CallStack>ntdll             0x00007ffa8f470000 + 9cfc4           
+KERNELBASE        0x00007ffa8d200000 + 21ace           
+CadRuntimeLoader  0x00007ff6e3350000 + 2068e16         
+CadRuntimeLoader  0x00007ff6e3350000 + 1b2bb93         
+CadRuntimeLoader  0x00007ff6e3350000 + 1b2d180         
+CadRuntimeLoader  0x00007ff6e3350000 + 1b32e55         
+CadRuntimeLoader  0x00007ff6e3350000 + 20652bb         
+CadRuntimeLoader  0x00007ff6e3350000 + 205b560         
+KERNEL32          0x00007ffa8f230000 + 17034           
+ntdll             0x00007ffa8f470000 + 52651           
+</CallStack>
+<IsCrashed>false</IsCrashed>
+<Registers></Registers>
+<ThreadID>19116</ThreadID>
+<ThreadName>TaskGraphThreadBP 17</ThreadName>
+</Thread>
+<Thread><CallStack>ntdll             0x00007ffa8f470000 + 9cfc4           
+KERNELBASE        0x00007ffa8d200000 + 21ace           
+CadRuntimeLoader  0x00007ff6e3350000 + 2068e16         
+CadRuntimeLoader  0x00007ff6e3350000 + 1b2c98e         
+CadRuntimeLoader  0x00007ff6e3350000 + 1b2d0ee         
+CadRuntimeLoader  0x00007ff6e3350000 + 1e606ed         
+CadRuntimeLoader  0x00007ff6e3350000 + 20652bb         
+CadRuntimeLoader  0x00007ff6e3350000 + 205b560         
+KERNEL32          0x00007ffa8f230000 + 17034           
+ntdll             0x00007ffa8f470000 + 52651           
+</CallStack>
+<IsCrashed>false</IsCrashed>
+<Registers></Registers>
+<ThreadID>3912</ThreadID>
+<ThreadName>StatsThread</ThreadName>
+</Thread>
+<Thread><CallStack>ntdll             0x00007ffa8f470000 + 9cfc4           
+KERNELBASE        0x00007ffa8d200000 + 21ace           
+CadRuntimeLoader  0x00007ff6e3350000 + 2068e16         
+CadRuntimeLoader  0x00007ff6e3350000 + 1c23aef         
+CadRuntimeLoader  0x00007ff6e3350000 + 20652bb         
+CadRuntimeLoader  0x00007ff6e3350000 + 205b560         
+KERNEL32          0x00007ffa8f230000 + 17034           
+ntdll             0x00007ffa8f470000 + 52651           
+</CallStack>
+<IsCrashed>false</IsCrashed>
+<Registers></Registers>
+<ThreadID>8068</ThreadID>
+<ThreadName>PoolThread 0</ThreadName>
+</Thread>
+<Thread><CallStack>ntdll             0x00007ffa8f470000 + 9cfc4           
+KERNELBASE        0x00007ffa8d200000 + 21ace           
+CadRuntimeLoader  0x00007ff6e3350000 + 2068e16         
+CadRuntimeLoader  0x00007ff6e3350000 + 1c23aef         
+CadRuntimeLoader  0x00007ff6e3350000 + 20652bb         
+CadRuntimeLoader  0x00007ff6e3350000 + 205b560         
+KERNEL32          0x00007ffa8f230000 + 17034           
+ntdll             0x00007ffa8f470000 + 52651           
+</CallStack>
+<IsCrashed>false</IsCrashed>
+<Registers></Registers>
+<ThreadID>6168</ThreadID>
+<ThreadName>PoolThread 1</ThreadName>
+</Thread>
+<Thread><CallStack>ntdll             0x00007ffa8f470000 + 9cfc4           
+KERNELBASE        0x00007ffa8d200000 + 21ace           
+CadRuntimeLoader  0x00007ff6e3350000 + 2068e16         
+CadRuntimeLoader  0x00007ff6e3350000 + 1c23aef         
+CadRuntimeLoader  0x00007ff6e3350000 + 20652bb         
+CadRuntimeLoader  0x00007ff6e3350000 + 205b560         
+KERNEL32          0x00007ffa8f230000 + 17034           
+ntdll             0x00007ffa8f470000 + 52651           
+</CallStack>
+<IsCrashed>false</IsCrashed>
+<Registers></Registers>
+<ThreadID>9240</ThreadID>
+<ThreadName>PoolThread 2</ThreadName>
+</Thread>
+<Thread><CallStack>ntdll             0x00007ffa8f470000 + 9cfc4           
+KERNELBASE        0x00007ffa8d200000 + 21ace           
+CadRuntimeLoader  0x00007ff6e3350000 + 2068e16         
+CadRuntimeLoader  0x00007ff6e3350000 + 1c23aef         
+CadRuntimeLoader  0x00007ff6e3350000 + 20652bb         
+CadRuntimeLoader  0x00007ff6e3350000 + 205b560         
+KERNEL32          0x00007ffa8f230000 + 17034           
+ntdll             0x00007ffa8f470000 + 52651           
+</CallStack>
+<IsCrashed>false</IsCrashed>
+<Registers></Registers>
+<ThreadID>8876</ThreadID>
+<ThreadName>PoolThread 3</ThreadName>
+</Thread>
+<Thread><CallStack>ntdll             0x00007ffa8f470000 + 9cfc4           
+KERNELBASE        0x00007ffa8d200000 + 21ace           
+CadRuntimeLoader  0x00007ff6e3350000 + 2068e16         
+CadRuntimeLoader  0x00007ff6e3350000 + 1c23aef         
+CadRuntimeLoader  0x00007ff6e3350000 + 20652bb         
+CadRuntimeLoader  0x00007ff6e3350000 + 205b560         
+KERNEL32          0x00007ffa8f230000 + 17034           
+ntdll             0x00007ffa8f470000 + 52651           
+</CallStack>
+<IsCrashed>false</IsCrashed>
+<Registers></Registers>
+<ThreadID>13072</ThreadID>
+<ThreadName>PoolThread 4</ThreadName>
+</Thread>
+<Thread><CallStack>ntdll             0x00007ffa8f470000 + 9cfc4           
+KERNELBASE        0x00007ffa8d200000 + 21ace           
+CadRuntimeLoader  0x00007ff6e3350000 + 2068e16         
+CadRuntimeLoader  0x00007ff6e3350000 + 1c23aef         
+CadRuntimeLoader  0x00007ff6e3350000 + 20652bb         
+CadRuntimeLoader  0x00007ff6e3350000 + 205b560         
+KERNEL32          0x00007ffa8f230000 + 17034           
+ntdll             0x00007ffa8f470000 + 52651           
+</CallStack>
+<IsCrashed>false</IsCrashed>
+<Registers></Registers>
+<ThreadID>3400</ThreadID>
+<ThreadName>PoolThread 5</ThreadName>
+</Thread>
+<Thread><CallStack>ntdll             0x00007ffa8f470000 + 9cfc4           
+KERNELBASE        0x00007ffa8d200000 + 21ace           
+CadRuntimeLoader  0x00007ff6e3350000 + 2068e16         
+CadRuntimeLoader  0x00007ff6e3350000 + 1c23aef         
+CadRuntimeLoader  0x00007ff6e3350000 + 20652bb         
+CadRuntimeLoader  0x00007ff6e3350000 + 205b560         
+KERNEL32          0x00007ffa8f230000 + 17034           
+ntdll             0x00007ffa8f470000 + 52651           
+</CallStack>
+<IsCrashed>false</IsCrashed>
+<Registers></Registers>
+<ThreadID>10460</ThreadID>
+<ThreadName>PoolThread 6</ThreadName>
+</Thread>
+<Thread><CallStack>ntdll             0x00007ffa8f470000 + 9cfc4           
+KERNELBASE        0x00007ffa8d200000 + 21ace           
+CadRuntimeLoader  0x00007ff6e3350000 + 2068e16         
+CadRuntimeLoader  0x00007ff6e3350000 + 1c23aef         
+CadRuntimeLoader  0x00007ff6e3350000 + 20652bb         
+CadRuntimeLoader  0x00007ff6e3350000 + 205b560         
+KERNEL32          0x00007ffa8f230000 + 17034           
+ntdll             0x00007ffa8f470000 + 52651           
+</CallStack>
+<IsCrashed>false</IsCrashed>
+<Registers></Registers>
+<ThreadID>216</ThreadID>
+<ThreadName>PoolThread 7</ThreadName>
+</Thread>
+<Thread><CallStack>ntdll             0x00007ffa8f470000 + 9d5c4           
+KERNELBASE        0x00007ffa8d200000 + 496de           
+CadRuntimeLoader  0x00007ff6e3350000 + 1da7e85         
+CadRuntimeLoader  0x00007ff6e3350000 + 20652bb         
+CadRuntimeLoader  0x00007ff6e3350000 + 205b560         
+KERNEL32          0x00007ffa8f230000 + 17034           
+ntdll             0x00007ffa8f470000 + 52651           
+</CallStack>
+<IsCrashed>false</IsCrashed>
+<Registers></Registers>
+<ThreadID>10344</ThreadID>
+<ThreadName>FAsyncWriter_CadRuntimeLoader</ThreadName>
+</Thread>
+<Thread><CallStack>ntdll             0x00007ffa8f470000 + 9d5c4           
+KERNELBASE        0x00007ffa8d200000 + 496de           
+CadRuntimeLoader  0x00007ff6e3350000 + 24eafe6         
+CadRuntimeLoader  0x00007ff6e3350000 + 20652bb         
+CadRuntimeLoader  0x00007ff6e3350000 + 205b560         
+KERNEL32          0x00007ffa8f230000 + 17034           
+ntdll             0x00007ffa8f470000 + 52651           
+</CallStack>
+<IsCrashed>false</IsCrashed>
+<Registers></Registers>
+<ThreadID>17312</ThreadID>
+<ThreadName>HttpManagerThread</ThreadName>
+</Thread>
+<Thread><CallStack>ntdll             0x00007ffa8f470000 + 9cfc4           
+KERNELBASE        0x00007ffa8d200000 + 21ace           
+CadRuntimeLoader  0x00007ff6e3350000 + 2068e16         
+CadRuntimeLoader  0x00007ff6e3350000 + c36af6          
+CadRuntimeLoader  0x00007ff6e3350000 + 20652bb         
+CadRuntimeLoader  0x00007ff6e3350000 + 205b560         
+KERNEL32          0x00007ffa8f230000 + 17034           
+ntdll             0x00007ffa8f470000 + 52651           
+</CallStack>
+<IsCrashed>false</IsCrashed>
+<Registers></Registers>
+<ThreadID>540</ThreadID>
+<ThreadName>OnlineAsyncTaskThreadNull DefaultInstance(1)</ThreadName>
+</Thread>
+<Thread><CallStack>ntdll             0x00007ffa8f470000 + 9cfc4           
+KERNELBASE        0x00007ffa8d200000 + 21ace           
+CadRuntimeLoader  0x00007ff6e3350000 + 2068e16         
+CadRuntimeLoader  0x00007ff6e3350000 + 51078cc         
+CadRuntimeLoader  0x00007ff6e3350000 + 20652bb         
+CadRuntimeLoader  0x00007ff6e3350000 + 205b560         
+KERNEL32          0x00007ffa8f230000 + 17034           
+ntdll             0x00007ffa8f470000 + 52651           
+</CallStack>
+<IsCrashed>false</IsCrashed>
+<Registers></Registers>
+<ThreadID>18536</ThreadID>
+<ThreadName>FMediaTicker</ThreadName>
+</Thread>
+<Thread><CallStack>ntdll             0x00007ffa8f470000 + 9cfc4           
+KERNELBASE        0x00007ffa8d200000 + 21ace           
+CadRuntimeLoader  0x00007ff6e3350000 + 2068e16         
+CadRuntimeLoader  0x00007ff6e3350000 + 1c23aef         
+CadRuntimeLoader  0x00007ff6e3350000 + 20652bb         
+CadRuntimeLoader  0x00007ff6e3350000 + 205b560         
+KERNEL32          0x00007ffa8f230000 + 17034           
+ntdll             0x00007ffa8f470000 + 52651           
+</CallStack>
+<IsCrashed>false</IsCrashed>
+<Registers></Registers>
+<ThreadID>19128</ThreadID>
+<ThreadName>PoolThread 8</ThreadName>
+</Thread>
+<Thread><CallStack>ntdll             0x00007ffa8f470000 + 9cfc4           
+KERNELBASE        0x00007ffa8d200000 + 21ace           
+CadRuntimeLoader  0x00007ff6e3350000 + 2068e16         
+CadRuntimeLoader  0x00007ff6e3350000 + 1c23aef         
+CadRuntimeLoader  0x00007ff6e3350000 + 20652bb         
+CadRuntimeLoader  0x00007ff6e3350000 + 205b560         
+KERNEL32          0x00007ffa8f230000 + 17034           
+ntdll             0x00007ffa8f470000 + 52651           
+</CallStack>
+<IsCrashed>false</IsCrashed>
+<Registers></Registers>
+<ThreadID>11972</ThreadID>
+<ThreadName>PoolThread 9</ThreadName>
+</Thread>
+<Thread><CallStack>ntdll             0x00007ffa8f470000 + 9cfc4           
+KERNELBASE        0x00007ffa8d200000 + 21ace           
+CadRuntimeLoader  0x00007ff6e3350000 + 2068e16         
+CadRuntimeLoader  0x00007ff6e3350000 + 1c23aef         
+CadRuntimeLoader  0x00007ff6e3350000 + 20652bb         
+CadRuntimeLoader  0x00007ff6e3350000 + 205b560         
+KERNEL32          0x00007ffa8f230000 + 17034           
+ntdll             0x00007ffa8f470000 + 52651           
+</CallStack>
+<IsCrashed>false</IsCrashed>
+<Registers></Registers>
+<ThreadID>1880</ThreadID>
+<ThreadName>PoolThread 10</ThreadName>
+</Thread>
+<Thread><CallStack>ntdll             0x00007ffa8f470000 + 9cfc4           
+KERNELBASE        0x00007ffa8d200000 + 21ace           
+CadRuntimeLoader  0x00007ff6e3350000 + 2068e16         
+CadRuntimeLoader  0x00007ff6e3350000 + 1c23aef         
+CadRuntimeLoader  0x00007ff6e3350000 + 20652bb         
+CadRuntimeLoader  0x00007ff6e3350000 + 205b560         
+KERNEL32          0x00007ffa8f230000 + 17034           
+ntdll             0x00007ffa8f470000 + 52651           
+</CallStack>
+<IsCrashed>false</IsCrashed>
+<Registers></Registers>
+<ThreadID>11416</ThreadID>
+<ThreadName>PoolThread 11</ThreadName>
+</Thread>
+<Thread><CallStack>ntdll             0x00007ffa8f470000 + 9cfc4           
+KERNELBASE        0x00007ffa8d200000 + 21ace           
+CadRuntimeLoader  0x00007ff6e3350000 + 2068e16         
+CadRuntimeLoader  0x00007ff6e3350000 + 5a877e5         
+CadRuntimeLoader  0x00007ff6e3350000 + 20652bb         
+CadRuntimeLoader  0x00007ff6e3350000 + 205b560         
+KERNEL32          0x00007ffa8f230000 + 17034           
+ntdll             0x00007ffa8f470000 + 52651           
+</CallStack>
+<IsCrashed>false</IsCrashed>
+<Registers></Registers>
+<ThreadID>16776</ThreadID>
+<ThreadName>ODSCThread</ThreadName>
+</Thread>
+<Thread><CallStack>ntdll             0x00007ffa8f470000 + 9cfc4           
+KERNELBASE        0x00007ffa8d200000 + 21ace           
+CadRuntimeLoader  0x00007ff6e3350000 + 2068e16         
+CadRuntimeLoader  0x00007ff6e3350000 + 1b2c98e         
+CadRuntimeLoader  0x00007ff6e3350000 + 1b2d0ee         
+CadRuntimeLoader  0x00007ff6e3350000 + 4798e99         
+CadRuntimeLoader  0x00007ff6e3350000 + 479e019         
+CadRuntimeLoader  0x00007ff6e3350000 + 20652bb         
+CadRuntimeLoader  0x00007ff6e3350000 + 205b560         
+KERNEL32          0x00007ffa8f230000 + 17034           
+ntdll             0x00007ffa8f470000 + 52651           
+</CallStack>
+<IsCrashed>false</IsCrashed>
+<Registers></Registers>
+<ThreadID>5048</ThreadID>
+<ThreadName>RenderThread 1</ThreadName>
+</Thread>
+<Thread><CallStack>ntdll             0x00007ffa8f470000 + 9d5c4           
+KERNELBASE        0x00007ffa8d200000 + 496de           
+CadRuntimeLoader  0x00007ff6e3350000 + 2066743         
+CadRuntimeLoader  0x00007ff6e3350000 + 479e168         
+CadRuntimeLoader  0x00007ff6e3350000 + 20652bb         
+CadRuntimeLoader  0x00007ff6e3350000 + 205b560         
+KERNEL32          0x00007ffa8f230000 + 17034           
+ntdll             0x00007ffa8f470000 + 52651           
+</CallStack>
+<IsCrashed>false</IsCrashed>
+<Registers></Registers>
+<ThreadID>2132</ThreadID>
+<ThreadName>RTHeartBeat 1</ThreadName>
+</Thread>
+<Thread><CallStack>ntdll             0x00007ffa8f470000 + 9cfc4           
+KERNELBASE        0x00007ffa8d200000 + 21ace           
+CadRuntimeLoader  0x00007ff6e3350000 + 2068e16         
+CadRuntimeLoader  0x00007ff6e3350000 + 2af78dd         
+CadRuntimeLoader  0x00007ff6e3350000 + 20652bb         
+CadRuntimeLoader  0x00007ff6e3350000 + 205b560         
+KERNEL32          0x00007ffa8f230000 + 17034           
+ntdll             0x00007ffa8f470000 + 52651           
+</CallStack>
+<IsCrashed>false</IsCrashed>
+<Registers></Registers>
+<ThreadID>17556</ThreadID>
+<ThreadName>FMessageBus.DefaultBus.Router</ThreadName>
+</Thread>
+<Thread><CallStack>ntdll             0x00007ffa8f470000 + 9d5c4           
+KERNELBASE        0x00007ffa8d200000 + 496de           
+CadRuntimeLoader  0x00007ff6e3350000 + 2066743         
+CadRuntimeLoader  0x00007ff6e3350000 + 19c049e         
+CadRuntimeLoader  0x00007ff6e3350000 + 20652bb         
+CadRuntimeLoader  0x00007ff6e3350000 + 205b560         
+KERNEL32          0x00007ffa8f230000 + 17034           
+ntdll             0x00007ffa8f470000 + 52651           
+</CallStack>
+<IsCrashed>false</IsCrashed>
+<Registers></Registers>
+<ThreadID>12728</ThreadID>
+<ThreadName>LiveLinkMessageBusDiscoveryManager</ThreadName>
+</Thread>
+<Thread><CallStack>ntdll             0x00007ffa8f470000 + 9cfc4           
+KERNELBASE        0x00007ffa8d200000 + 21ace           
+CadRuntimeLoader  0x00007ff6e3350000 + 2068e16         
+CadRuntimeLoader  0x00007ff6e3350000 + 694cf82         
+CadRuntimeLoader  0x00007ff6e3350000 + 20652bb         
+CadRuntimeLoader  0x00007ff6e3350000 + 205b560         
+KERNEL32          0x00007ffa8f230000 + 17034           
+ntdll             0x00007ffa8f470000 + 52651           
+</CallStack>
+<IsCrashed>false</IsCrashed>
+<Registers></Registers>
+<ThreadID>10072</ThreadID>
+<ThreadName>FFileTransferRunnable</ThreadName>
+</Thread>
+<Thread><CallStack>ntdll             0x00007ffa8f470000 + 9cfc4           
+KERNELBASE        0x00007ffa8d200000 + 21ace           
+CadRuntimeLoader  0x00007ff6e3350000 + 2068e16         
+CadRuntimeLoader  0x00007ff6e3350000 + 1c23aef         
+CadRuntimeLoader  0x00007ff6e3350000 + 20652bb         
+CadRuntimeLoader  0x00007ff6e3350000 + 205b560         
+KERNEL32          0x00007ffa8f230000 + 17034           
+ntdll             0x00007ffa8f470000 + 52651           
+</CallStack>
+<IsCrashed>false</IsCrashed>
+<Registers></Registers>
+<ThreadID>16032</ThreadID>
+<ThreadName>PoolThread 12</ThreadName>
+</Thread>
+<Thread><CallStack>ntdll             0x00007ffa8f470000 + 9cfc4           
+KERNELBASE        0x00007ffa8d200000 + 21ace           
+CadRuntimeLoader  0x00007ff6e3350000 + 2068e16         
+CadRuntimeLoader  0x00007ff6e3350000 + 1c23aef         
+CadRuntimeLoader  0x00007ff6e3350000 + 20652bb         
+CadRuntimeLoader  0x00007ff6e3350000 + 205b560         
+KERNEL32          0x00007ffa8f230000 + 17034           
+ntdll             0x00007ffa8f470000 + 52651           
+</CallStack>
+<IsCrashed>false</IsCrashed>
+<Registers></Registers>
+<ThreadID>17932</ThreadID>
+<ThreadName>PoolThread 13</ThreadName>
+</Thread>
+<Thread><CallStack>ntdll             0x00007ffa8f470000 + 9d5c4           
+KERNELBASE        0x00007ffa8d200000 + 496de           
+CadRuntimeLoader  0x00007ff6e3350000 + 2066743         
+CadRuntimeLoader  0x00007ff6e3350000 + 60d0e51         
+CadRuntimeLoader  0x00007ff6e3350000 + 20652bb         
+CadRuntimeLoader  0x00007ff6e3350000 + 205b560         
+KERNEL32          0x00007ffa8f230000 + 17034           
+ntdll             0x00007ffa8f470000 + 52651           
+</CallStack>
+<IsCrashed>false</IsCrashed>
+<Registers></Registers>
+<ThreadID>10960</ThreadID>
+<ThreadName>ScreenSaverInhibitor</ThreadName>
+</Thread>
+<Thread><CallStack>ntdll             0x00007ffa8f470000 + 9cfc4           
+KERNELBASE        0x00007ffa8d200000 + 21ace           
+CadRuntimeLoader  0x00007ff6e3350000 + 2068e16         
+CadRuntimeLoader  0x00007ff6e3350000 + 4ea5105         
+CadRuntimeLoader  0x00007ff6e3350000 + 4ea4fc0         
+CadRuntimeLoader  0x00007ff6e3350000 + 20652bb         
+CadRuntimeLoader  0x00007ff6e3350000 + 205b560         
+KERNEL32          0x00007ffa8f230000 + 17034           
+ntdll             0x00007ffa8f470000 + 52651           
+</CallStack>
+<IsCrashed>false</IsCrashed>
+<Registers></Registers>
+<ThreadID>7772</ThreadID>
+<ThreadName>AudioMixerRenderThread(1)</ThreadName>
+</Thread>
+<Thread><CallStack>ntdll             0x00007ffa8f470000 + 9cfc4           
+KERNELBASE        0x00007ffa8d200000 + 21ace           
+CadRuntimeLoader  0x00007ff6e3350000 + 2068e16         
+CadRuntimeLoader  0x00007ff6e3350000 + 1b2c98e         
+CadRuntimeLoader  0x00007ff6e3350000 + 1b2d0ee         
+CadRuntimeLoader  0x00007ff6e3350000 + 54379b7         
+CadRuntimeLoader  0x00007ff6e3350000 + 20652bb         
+CadRuntimeLoader  0x00007ff6e3350000 + 205b560         
+KERNEL32          0x00007ffa8f230000 + 17034           
+ntdll             0x00007ffa8f470000 + 52651           
+</CallStack>
+<IsCrashed>false</IsCrashed>
+<Registers></Registers>
+<ThreadID>10988</ThreadID>
+<ThreadName>AudioThread</ThreadName>
+</Thread>
+<Thread><CallStack>ntdll             0x00007ffa8f470000 + 9cfc4           
+KERNELBASE        0x00007ffa8d200000 + 21ace           
+CadRuntimeLoader  0x00007ff6e3350000 + 2068e16         
+CadRuntimeLoader  0x00007ff6e3350000 + 23295b2         
+CadRuntimeLoader  0x00007ff6e3350000 + 20652bb         
+CadRuntimeLoader  0x00007ff6e3350000 + 205b560         
+KERNEL32          0x00007ffa8f230000 + 17034           
+ntdll             0x00007ffa8f470000 + 52651           
+</CallStack>
+<IsCrashed>false</IsCrashed>
+<Registers></Registers>
+<ThreadID>18264</ThreadID>
+<ThreadName>FAsyncPurge</ThreadName>
+</Thread>
+</Threads>
+</RuntimeProperties>
+<PlatformProperties>
+<PlatformIsRunningWindows>1</PlatformIsRunningWindows>
+<IsRunningOnBattery>false</IsRunningOnBattery>
+<PlatformCallbackResult>0</PlatformCallbackResult>
+</PlatformProperties>
+<EngineData>
+<RHI.IsGPUOverclocked>false</RHI.IsGPUOverclocked>
+<RHI.RHIName>D3D11</RHI.RHIName>
+<RHI.AdapterName>Radeon (TM) RX 470 Graphics</RHI.AdapterName>
+<RHI.UserDriverVersion>AMD Software: Adrenalin Edition 22.6.1</RHI.UserDriverVersion>
+<RHI.InternalDriverVersion>30.0.21023.1015</RHI.InternalDriverVersion>
+<RHI.DriverDate>6-22-2022</RHI.DriverDate>
+<RHI.FeatureLevel>SM5</RHI.FeatureLevel>
+<DeviceProfile.Name>WindowsNoEditor</DeviceProfile.Name>
+<Platform.AppHasFocus>true</Platform.AppHasFocus>
+</EngineData>
+<GameData>
+</GameData>
+</FGenericCrashContext>

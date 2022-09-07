@@ -4,58 +4,6 @@
 #include "CRLGenerator.h"
 
 
-void UCRLGenerator::GenerateMesh(AActor* Actor, FString File, UMaterialInterface* OpaqueMaterial, UMaterialInterface* TransMaterial, bool collision)
-{
-	TArray<FVector> Vertices;
-	TArray<FVector2D> TextureCoords;
-	TArray<FVector> Normals;
-	TArray<FString> Materials;
-	TArray<float> MaterialValues;
-	TArray<FString> MaterialNames;
-	FString materialFileName = "Models/inosoft.mtl";
-	FString materialFile;
-	MaterialNames ;
-	TArray<FString> triangleStrings;
-
-	URuntimeMeshComponentStatic* rmc = NewObject<URuntimeMeshComponentStatic>(Actor, TEXT("RMC"));
-	rmc->AttachToComponent(Actor->GetRootComponent(), FAttachmentTransformRules::KeepRelativeTransform);
-	rmc->RegisterComponent();
-	URuntimeMeshProviderStatic* StaticProvider = NewObject<URuntimeMeshProviderStatic>(rmc, TEXT("StaticProvider"));
-	rmc->Initialize(StaticProvider);
-	FRuntimeMeshCollisionSettings CS;
-	CS.bUseAsyncCooking = true;
-	CS.bUseComplexAsSimple = true;
-	CS.CookingMode = ERuntimeMeshCollisionCookingMode::CookingPerformance;
-	StaticProvider->SetCollisionSettings(CS);
-
-	for (int i = 0; i < MaterialNames.Num(); i++) {
-		UMaterialInstanceDynamic* CustomMaterial;
-		if (MaterialValues[5 * i + 3] == 1) {
-			CustomMaterial = UMaterialInstanceDynamic::Create(OpaqueMaterial, rmc);
-			CustomMaterial->SetScalarParameterValue("Specular", MaterialValues[5 * i + 4] / 1000);
-		}
-		else {
-			CustomMaterial = UMaterialInstanceDynamic::Create(TransMaterial, rmc);
-			CustomMaterial->SetScalarParameterValue("Opacity", MaterialValues[5 * i + 3]);
-		}
-
-		float r = MaterialValues[5 * i];
-		float g = MaterialValues[5 * i + 1];
-		float b = MaterialValues[5 * i + 2];
-		CustomMaterial->SetVectorParameterValue("Colour", FLinearColor(r, g, b));
-		StaticProvider->SetupMaterialSlot(i, FName(MaterialNames[i]), CustomMaterial);
-	}
-
-	TArray<FColor> Colors{ FColor::Blue, FColor::Red, FColor::Green };
-	TArray<FVector> EmptyNormals;
-	TArray<FVector2D> EmptyTexCoords;
-	TArray<FRuntimeMeshTangent> EmptyTangents;
-
-	for (int i = 0; i < triangleStrings.Num(); i++) {
-		TArray<int> triangles;
-		StaticProvider->CreateSectionFromComponents(0, i, MaterialNames.IndexOfByKey(Materials[i]), Vertices, triangles, EmptyNormals, TextureCoords, Colors, EmptyTangents, ERuntimeMeshUpdateFrequency::Infrequent, collision);
-	}
-}
 
 void UCRLGenerator::GenerateMeshSection(AActor* actor, int sectionId, TArray<FVector> Vertices, TArray<FString> Sections, TArray<FVector2D> TextureCoords, TArray<FVector> Normals, UMaterialInterface* OpaqueMaterial, UMaterialInterface* TransMaterial, TMap<FString, FString> Materials, bool collision)
 {
@@ -64,7 +12,7 @@ void UCRLGenerator::GenerateMeshSection(AActor* actor, int sectionId, TArray<FVe
 	RMC->AttachToComponent(actor->GetRootComponent(), FAttachmentTransformRules::KeepRelativeTransform);
 	RMC->RegisterComponent();
 	
-		URuntimeMeshProviderStatic* StaticProvider = NewObject<URuntimeMeshProviderStatic>(RMC, FName("StaticProvider"));
+	URuntimeMeshProviderStatic* StaticProvider = NewObject<URuntimeMeshProviderStatic>(RMC, FName("StaticProvider"));
 	FRuntimeMeshCollisionSettings CS;
 	CS.bUseAsyncCooking = true;
 	CS.bUseComplexAsSimple = true;
@@ -76,9 +24,11 @@ void UCRLGenerator::GenerateMeshSection(AActor* actor, int sectionId, TArray<FVe
 	FString sep = " ";
 	TArray<FString> PartMaterialValues;
 	UMaterialInstanceDynamic* CustomMaterial;
+
 	TArray<FColor> Colors{ FColor::Blue, FColor::Red, FColor::Green };
 	TArray<FVector> EmptyNormals;
 	TArray<FRuntimeMeshTangent> EmptyTangents;
+
 	RMC->SectionId = sectionId;
 	RMC->EnableNormalTangentGeneration();
 	GetSectionParts(Sections[sectionId], SectionMaterials, Parts);
@@ -88,7 +38,7 @@ void UCRLGenerator::GenerateMeshSection(AActor* actor, int sectionId, TArray<FVe
 	float minY = FLT_MAX;
 	float maxZ = -FLT_MAX;
 	float minZ = FLT_MAX;
-
+	
 	for (int i = 0; i < Parts.Num(); i++) {
 		TArray<int> Faces = GetFacesFromPart(Parts[i]);
 		for (auto& num : Faces) {
@@ -103,6 +53,7 @@ void UCRLGenerator::GenerateMeshSection(AActor* actor, int sectionId, TArray<FVe
 			if (z < minZ) { minZ = z; }
 		}
 	}
+
 	FVector Center = FVector((minX + maxX) / 2, (minY + maxY) / 2, (minZ + maxZ) / 2);
 	RMC->MidVector = Center;
 	RMC->SetRelativeLocation(Center);
@@ -137,9 +88,9 @@ void UCRLGenerator::GenerateMeshSection(AActor* actor, int sectionId, TArray<FVe
 				StaticProvider->SetupMaterialSlot(i, FName("NoMaterial"), NULL);
 			}
 		}
-			//RMC->SetVisibility(false, false);
 			StaticProvider->CreateSectionFromComponents(0, i, i, NormalizedVertices, Faces, EmptyNormals, TextureCoords, Colors, EmptyTangents, ERuntimeMeshUpdateFrequency::Infrequent, collision);
 		}
+		
 }
 
 void UCRLGenerator::GenerateMeshComponent(AActor* actor, TArray<FVector> vertices, TArray<int> triangles, UMaterialInstanceDynamic* Material, bool collision)

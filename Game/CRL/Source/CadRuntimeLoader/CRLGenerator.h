@@ -20,8 +20,6 @@ class CADRUNTIMELOADER_API UCRLGenerator : public UBlueprintFunctionLibrary
 {
 	GENERATED_BODY()
 	
-	UFUNCTION(BlueprintCallable, Category = " File I/O")
-		static void GenerateMesh(AActor* Actor, FString File, UMaterialInterface* OpaqueMaterial, UMaterialInterface* TransMaterial, bool collision);
 
 	UFUNCTION(BlueprintCallable, Category = " File I/O")
 		static void GenerateMeshSection(AActor* actor, int sectionId, TArray<FVector> Vertices, TArray<FString> Sections, TArray<FVector2D> TextureCoords, TArray<FVector> Normals, UMaterialInterface* OpaqueMaterial, UMaterialInterface* TransMaterial, TMap<FString, FString> Materials, bool collision);

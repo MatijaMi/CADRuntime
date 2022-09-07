@@ -69,8 +69,19 @@ TArray<FString> UCADParser::ParseOBJ(FString Input, TArray<FVector>& Vertices, T
 								output.Append(CurrentMaterial);
 								output.Append("\n");
 							}
-							output.Append(line);
-							output.Append("\n");
+							TArray<FString> splitArray;
+							line.ParseIntoArray(splitArray, *loopSeparator);
+							if (splitArray.Num() > 4) {
+								for (int i = 0; i < splitArray.Num() - 3; i++) {
+									output.Append("f " + splitArray[1] + " " + splitArray[i+2] + " " + splitArray[i+3]);
+									output.Append("\n");
+								}
+
+							}else {
+								output.Append(line);
+								output.Append("\n");
+							}
+							
 						}
 						else {
 							if (line.StartsWith("usemtl ")) {
@@ -96,8 +107,7 @@ TArray<FString> UCADParser::ParseOBJ(FString Input, TArray<FVector>& Vertices, T
 	}
 	
 	for (auto& vertex : Vertices) {
-		//vertex.X = -vertex.X;
-		vertex.X = -(2 * ((vertex.X - minX) / (maxX - minX)) - 1) * (2540*(abs(maxX - minX) / maxDiff));
+		vertex.X = -(2 * ((vertex.X - minX) / (maxX - minX)) - 1) * (2540 *(abs(maxX - minX) / maxDiff));
 		vertex.Y = (2 * ((vertex.Y - minY) / (maxY - minY)) - 1) * (2540 * (abs(maxY - minY) / maxDiff));
 		vertex.Z = (2 * ((vertex.Z - minZ) / (maxZ - minZ)) - 1) * (2540 * (abs(maxZ - minZ) / maxDiff));
 	}
@@ -151,6 +161,7 @@ TMap<FString, FString>  UCADParser::ParseOBJMaterial(FString input)
 }
 
 
+
 FString UCADParser::LoadFileToString(FString Filename) {
 	FString directory;
 	FString name;
@@ -180,11 +191,95 @@ TArray<FString> UCADParser::OpenFolder(FString Directory) {
 			FilteredContent.Add(name);
 		}
 		else {
-			if (name.EndsWith(".obj")|| name.EndsWith(".mtl")) {
+			if (name.EndsWith(".obj")|| name.EndsWith(".mtl") || name.EndsWith(".stl")) {
 				FilteredContent.Add(name);
 			}
 		}
 	}
 	return FilteredContent;
 
+}
+
+TArray<FString> UCADParser::ParseFile(FString Input, TArray<FVector>& Vertices, TArray<FVector2D>& TextureCoords, TArray<FVector>& Normals)
+{
+	if (Input.StartsWith("solid")) {
+		return ParseSTL(Input, Vertices, TextureCoords, Normals);
+	}
+	else {
+		return ParseOBJ(Input, Vertices, TextureCoords, Normals);
+	}
+}
+
+
+TArray<FString> UCADParser::ParseSTL(FString Input, TArray<FVector>& Vertices, TArray<FVector2D>& textureCoords, TArray<FVector>& Normals)
+{
+
+	TArray<FString> inputArray;
+	FString sep = "\n";
+	Input.ParseIntoArray(inputArray, *sep);
+	TArray<FString> Sections;
+	FString output = "";
+	TArray<FString> workingArray;
+	int addedTriangles =0;
+	FString loopSeparator = " ";
+	float maxX = -FLT_MAX;
+	float minX = FLT_MAX;
+	float maxY = -FLT_MAX;
+	float minY = FLT_MAX;
+	float maxZ = -FLT_MAX;
+	float minZ = FLT_MAX;
+
+
+	for (auto line : inputArray) {
+		workingArray.Empty();
+		if (line.Contains("vertex")) {
+			line =line.TrimStart();
+			line.RemoveFromStart("vertex ");
+			line.ParseIntoArray(workingArray, *loopSeparator);
+			
+			float x = FCString::Atof(*workingArray[0]);
+			float y = FCString::Atof(*workingArray[1]);
+			float z = FCString::Atof(*workingArray[2]);
+			if (x > maxX) { maxX = x; }
+			if (x < minX) { minX = x; }
+			if (y > maxY) { maxY = y; }
+			if (y < minY) { minY = y; }
+			if (z > maxZ) { maxZ = z; }
+			if (z < minZ) { minZ = z; }
+			Vertices.Add(FVector(x, y, z));
+		}
+		else {
+			if (line.Contains("outer loop")) {
+				int t = addedTriangles;
+				FString x = "";
+				FString y = "";
+				FString z = "";
+				x = x.FromInt(t * 3+1);
+				y = y.FromInt(t * 3 +2);
+				z = z.FromInt(t * 3 +3);
+				output.Append("f " + x + " " + y + " " + z);
+				output.Append("\n");
+				addedTriangles++;
+			}
+		}
+		
+	}
+
+	float maxDiff = abs(maxX - minX);
+	if (abs(maxY - minY) > maxDiff) {
+		maxDiff = abs(maxY - minY);
+	}
+	else {
+		if (abs(maxZ - minZ) > maxDiff) {
+			maxDiff = abs(maxZ - minZ);
+		}
+	}
+
+	for (auto& vertex : Vertices) {
+		vertex.X = -(2 * ((vertex.X - minX) / (maxX - minX)) - 1) * (2540 * (abs(maxX - minX) / maxDiff));
+		vertex.Y = (2 * ((vertex.Y - minY) / (maxY - minY)) - 1) * (2540 * (abs(maxY - minY) / maxDiff));
+		vertex.Z = (2 * ((vertex.Z - minZ) / (maxZ - minZ)) - 1) * (2540 * (abs(maxZ - minZ) / maxDiff));
+	}
+	Sections.Add(output);
+	return Sections;
 }
