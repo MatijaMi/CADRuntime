@@ -5,13 +5,12 @@
 
 
 
-void UCRLGenerator::GenerateMeshSection(AActor* actor, int sectionId, TArray<FVector> Vertices, TArray<FString> Sections, TArray<FVector2D> TextureCoords, TArray<FVector> Normals, UMaterialInterface* OpaqueMaterial, UMaterialInterface* TransMaterial, TMap<FString, FString> Materials, bool collision)
+void UCRLGenerator::GenerateMeshComponent(AActor* actor, int ComponentID, TArray<FVector> Vertices, FString Component, TArray<FVector2D> TextureCoords, TArray<FVector> Normals, UMaterialInterface* OpaqueMaterial, UMaterialInterface* TransMaterial, TMap<FString, FString> Materials, bool collision)
 {
 	UMyRuntimeMeshComponentStatic* RMC = NewObject<UMyRuntimeMeshComponentStatic>(actor);
 	RMC->SetIsReplicated(true);
 	RMC->AttachToComponent(actor->GetRootComponent(), FAttachmentTransformRules::KeepRelativeTransform);
 	RMC->RegisterComponent();
-	
 	URuntimeMeshProviderStatic* StaticProvider = NewObject<URuntimeMeshProviderStatic>(RMC, FName("StaticProvider"));
 	FRuntimeMeshCollisionSettings CS;
 	CS.bUseAsyncCooking = true;
@@ -19,19 +18,19 @@ void UCRLGenerator::GenerateMeshSection(AActor* actor, int sectionId, TArray<FVe
 	CS.CookingMode = ERuntimeMeshCollisionCookingMode::CookingPerformance;
 	StaticProvider->SetCollisionSettings(CS);
 	
-	TArray<FString> SectionMaterials;
-	TArray<FString> Parts;
+	TArray<FString> ComponentMaterials;
+	TArray<FString> Sections;
 	FString sep = " ";
-	TArray<FString> PartMaterialValues;
+	TArray<FString> SectionMaterialValues;
 	UMaterialInstanceDynamic* CustomMaterial;
 
 	TArray<FColor> Colors{ FColor::Blue, FColor::Red, FColor::Green };
 	TArray<FVector> EmptyNormals;
 	TArray<FRuntimeMeshTangent> EmptyTangents;
 
-	RMC->SectionId = sectionId;
+	RMC->SectionId = ComponentID;
 	RMC->EnableNormalTangentGeneration();
-	GetSectionParts(Sections[sectionId], SectionMaterials, Parts);
+	GetComponentSections(Component, ComponentMaterials, Sections);
 	float maxX = -FLT_MAX;
 	float minX = FLT_MAX;
 	float maxY = -FLT_MAX;
@@ -39,8 +38,8 @@ void UCRLGenerator::GenerateMeshSection(AActor* actor, int sectionId, TArray<FVe
 	float maxZ = -FLT_MAX;
 	float minZ = FLT_MAX;
 	
-	for (int i = 0; i < Parts.Num(); i++) {
-		TArray<int> Faces = GetFacesFromPart(Parts[i]);
+	for (int i = 0; i < Sections.Num(); i++) {
+		TArray<int> Faces = GetFacesFromSection(Sections[i]);
 		for (auto& num : Faces) {
 			float x = Vertices[num].X;
 			float y = Vertices[num].Y;
@@ -64,25 +63,25 @@ void UCRLGenerator::GenerateMeshSection(AActor* actor, int sectionId, TArray<FVe
 		NormalizedVertices.Add(Vertices[i]-Center);
 	}
 	
-	for (int i = 0; i < Parts.Num(); i++) {
-		TArray<int> Faces = GetFacesFromPart(Parts[i]);
-		if (SectionMaterials.Num() > 0) {
-			FString* PartMaterial = Materials.Find(SectionMaterials[i]);
+	for (int i = 0; i < Sections.Num(); i++) {
+		TArray<int> Faces = GetFacesFromSection(Sections[i]);
+		if (ComponentMaterials.Num() > 0) {
+			FString* PartMaterial = Materials.Find(ComponentMaterials[i]);
 			if (PartMaterial != NULL) {
-				PartMaterial->ParseIntoArray(PartMaterialValues, *sep);
-				if (FCString::Atof(*PartMaterialValues[3]) > 0.99) {
+				PartMaterial->ParseIntoArray(SectionMaterialValues, *sep);
+				if (FCString::Atof(*SectionMaterialValues[3]) > 0.99) {
 					CustomMaterial = UMaterialInstanceDynamic::Create(OpaqueMaterial, RMC);
-					CustomMaterial->SetScalarParameterValue("Specular", FCString::Atof(*PartMaterialValues[4]) / 1000);
+					CustomMaterial->SetScalarParameterValue("Specular", FCString::Atof(*SectionMaterialValues[4]) / 1000);
 				}
 				else {
 					CustomMaterial = UMaterialInstanceDynamic::Create(TransMaterial, RMC);
-					CustomMaterial->SetScalarParameterValue("Opacity", FCString::Atof(*PartMaterialValues[3]));
+					CustomMaterial->SetScalarParameterValue("Opacity", FCString::Atof(*SectionMaterialValues[3]));
 				}
-				float r = FCString::Atof(*PartMaterialValues[0]);
-				float g = FCString::Atof(*PartMaterialValues[1]);
-				float b = FCString::Atof(*PartMaterialValues[2]);
+				float r = FCString::Atof(*SectionMaterialValues[0]);
+				float g = FCString::Atof(*SectionMaterialValues[1]);
+				float b = FCString::Atof(*SectionMaterialValues[2]);
 				CustomMaterial->SetVectorParameterValue("Colour", FLinearColor(r, g, b));
-				StaticProvider->SetupMaterialSlot(i, FName(SectionMaterials[i]), CustomMaterial);
+				StaticProvider->SetupMaterialSlot(i, FName(ComponentMaterials[i]), CustomMaterial);
 			}
 			else {
 				StaticProvider->SetupMaterialSlot(i, FName("NoMaterial"), NULL);
@@ -93,77 +92,36 @@ void UCRLGenerator::GenerateMeshSection(AActor* actor, int sectionId, TArray<FVe
 		
 }
 
-void UCRLGenerator::GenerateMeshComponent(AActor* actor, TArray<FVector> vertices, TArray<int> triangles, UMaterialInstanceDynamic* Material, bool collision)
-{
-	UMyRuntimeMeshComponentStatic* RMC = NewObject<UMyRuntimeMeshComponentStatic>(actor);
-	RMC->SetIsReplicated(true);
-	RMC->AttachToComponent(actor->GetRootComponent(), FAttachmentTransformRules::KeepRelativeTransform);
-	RMC->RegisterComponent();
-	URuntimeMeshProviderStatic* StaticProvider = NewObject<URuntimeMeshProviderStatic>(RMC, FName("StaticProvider"));
-	FRuntimeMeshCollisionSettings CS;
-	CS.bUseAsyncCooking = true;
-	CS.bUseComplexAsSimple = true;
-	CS.CookingMode = ERuntimeMeshCollisionCookingMode::CookingPerformance;
-	StaticProvider->SetCollisionSettings(CS);
-	StaticProvider->SetupMaterialSlot(0, FName("Material"), NULL);
-	TArray<FColor> Colors{ FColor::Blue, FColor::Red, FColor::Green };
-	TArray<FVector> EmptyNormals;
-	TArray<FVector2D> EmptyTexCoords;
-	TArray<FRuntimeMeshTangent> EmptyTangents;
-	StaticProvider->CreateSectionFromComponents(0, 0, 0, vertices, triangles, EmptyNormals, EmptyTexCoords, Colors, EmptyTangents, ERuntimeMeshUpdateFrequency::Infrequent, collision);
-}
-
-void UCRLGenerator::GetDataForSection(FString trianglesIn, TArray<FVector> verticesIn, TArray<FVector>& vertices, TArray<int>& trianglesOut)
-{
-	TArray<int> trianglesTemp;
-	TArray<int> checkedVerts;
-
-	for (int i = 0; i < trianglesTemp.Num(); i++) {
-		if (checkedVerts.Contains(trianglesTemp[i])) {
-			for (int j = 0; j < checkedVerts.Num(); j++) {
-				if (checkedVerts[j] == trianglesTemp[i]) {
-					trianglesOut.Add(j);
-				}
-			}
-		}
-		else {
-			trianglesOut.Add(checkedVerts.Num());
-			checkedVerts.Add(trianglesTemp[i]);
-			vertices.Add(verticesIn[trianglesTemp[i]]);
-		}
-	}
-}
-
-void UCRLGenerator::GetSectionParts(FString Section, TArray<FString>& Materials, TArray<FString>& Parts)
+void UCRLGenerator::GetComponentSections(FString Component, TArray<FString>& Materials, TArray<FString>& Sections)
 {
 	TArray<FString> InputArray;
 	FString sep = "\n";
-	Section.ParseIntoArray(InputArray, *sep);
-	FString Part = "";
+	Component.ParseIntoArray(InputArray, *sep);
+	FString Section = "";
 	
 	for (auto line : InputArray) {
 		if (line.StartsWith("usemtl ")) {
 			line.RemoveFromStart("usemtl ");
 			Materials.Add(line);
-			if (Part != "") {
-				Parts.Add(Part);
-				Part = "";
+			if (Section != "") {
+				Sections.Add(Section);
+				Section = "";
 			}
 		}else{
-			Part.Append(line);
-			Part.Append("\n");
+			Section.Append(line);
+			Section.Append("\n");
 		}
 	}
-	Parts.Add(Part);
+	Sections.Add(Section);
 }
 
-TArray<int> UCRLGenerator::GetFacesFromPart(FString Part)
+TArray<int> UCRLGenerator::GetFacesFromSection(FString Section)
 {
 	TArray<int> Faces;
 	FString sep = "/";
 	TArray<FString> inputArray;
 	FString sep1 = "\n";
-	Part.ParseIntoArray(inputArray, *sep1);
+	Section.ParseIntoArray(inputArray, *sep1);
 	for (auto& sting : inputArray) {
 
 		sting.RemoveFromStart("f ");

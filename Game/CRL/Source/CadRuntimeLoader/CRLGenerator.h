@@ -22,14 +22,9 @@ class CADRUNTIMELOADER_API UCRLGenerator : public UBlueprintFunctionLibrary
 	
 
 	UFUNCTION(BlueprintCallable, Category = " File I/O")
-		static void GenerateMeshSection(AActor* actor, int sectionId, TArray<FVector> Vertices, TArray<FString> Sections, TArray<FVector2D> TextureCoords, TArray<FVector> Normals, UMaterialInterface* OpaqueMaterial, UMaterialInterface* TransMaterial, TMap<FString, FString> Materials, bool collision);
+		static void GenerateMeshComponent(AActor* actor, int ComponentID, TArray<FVector> Vertices, FString Component, TArray<FVector2D> TextureCoords, TArray<FVector> Normals, UMaterialInterface* OpaqueMaterial, UMaterialInterface* TransMaterial, TMap<FString, FString> Materials, bool collision);
 
-	UFUNCTION(BlueprintCallable, Category = " File I/O")
-		static void GenerateMeshComponent(AActor* actor, TArray<FVector> vertices, TArray<int> triangles, UMaterialInstanceDynamic* Material, bool collision);
+	static void GetComponentSections(FString Component, TArray<FString>& Materials, TArray<FString>& Sections);
 
-	UFUNCTION(BlueprintCallable, Category = " File I/O")
-		static void GetDataForSection(FString trianglesIn, TArray < FVector> verticesIn, TArray<FVector>& vertices, TArray<int>& trianglesOut);
-
-	static void GetSectionParts(FString Section, TArray<FString>& Materials, TArray<FString>& Parts);
-	static TArray<int> GetFacesFromPart(FString Part);
+	static TArray<int> GetFacesFromSection(FString Section);
 };
