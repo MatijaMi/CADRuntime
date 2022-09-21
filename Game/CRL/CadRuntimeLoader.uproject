@@ -64,6 +64,10 @@
 				"Win64",
 				"Android"
 			]
+		},
+		{
+			"Name": "DatasmithGLTFImporter",
+			"Enabled": true
 		}
 	],
 	"TargetPlatforms": [
