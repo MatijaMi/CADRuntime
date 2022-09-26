@@ -27,4 +27,7 @@ class CADRUNTIMELOADER_API UCRLGenerator : public UBlueprintFunctionLibrary
 	static void GetComponentSections(FString Component, TArray<FString>& Materials, TArray<FString>& Sections);
 
 	static TArray<int> GetFacesFromSection(FString Section);
+
+	static UMaterialInstanceDynamic* GenerateDynamicMaterial(UMyRuntimeMeshComponentStatic* RMC, FString* PartMaterial, TArray<FString> SectionMaterialValues, UMaterialInterface* OpaqueMaterial, UMaterialInterface* TransMaterial);
+
 };

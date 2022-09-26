@@ -6,87 +6,93 @@
 
 TArray<FString> UCADParser::ParseOBJ(FString Input, TArray<FVector>& Vertices, TArray<FVector2D>& TextureCoords, TArray<FVector>& Normals)
 {
-	TArray<FString> inputArray;
-	FString sep = "\n";
-	Input.ParseIntoArray(inputArray, *sep);
-	FString output = "";
+	TArray<FString> InputArray;
+	FString Separator = "\n";
+	FString LoopSeparator = " ";
+	FString Output = "";
+	int Scale = 2540;
 	TArray<FString> Sections;
-	TArray<FString> workingArray;
+	TArray<FString> WorkingArray;
 	FString CurrentMaterial;
-	FString loopSeparator = " ";
-	float maxX = -FLT_MAX;
-	float minX = FLT_MAX;
-	float maxY = -FLT_MAX;
-	float minY = FLT_MAX;
-	float maxZ = -FLT_MAX;
-	float minZ = FLT_MAX;
+	
+	//Min and Max used for centering and scaling vertices
+	float maxX = -FLT_MAX, maxY = -FLT_MAX, maxZ = -FLT_MAX;
+	float minX = FLT_MAX, minY = FLT_MAX, minZ = FLT_MAX;
 
-
-	for (auto line : inputArray) {
-		workingArray.Empty();
+	//Parse loaded string file into an array of lines
+	Input.ParseIntoArray(InputArray, *Separator);
+	for (auto line : InputArray) {
+		WorkingArray.Empty();
+		//Vertices
 		if (line.StartsWith("v ")) {
 			line.RemoveFromStart("v ");
-			line.ParseIntoArray(workingArray, *loopSeparator);
+			line.ParseIntoArray(WorkingArray, *LoopSeparator);
 
-			float x = FCString::Atof(*workingArray[0]);
-			float y = FCString::Atof(*workingArray[1]);
-			float z = FCString::Atof(*workingArray[2]);
-			if (x > maxX) { maxX = x; }
-			if (x < minX) { minX = x; }
-			if (y > maxY) { maxY = y; }
-			if (y < minY) { minY = y; }
-			if (z > maxZ) { maxZ = z; }
-			if (z < minZ) { minZ = z; }
+			float x = FCString::Atof(*WorkingArray[0]);
+			float y = FCString::Atof(*WorkingArray[1]);
+			float z = FCString::Atof(*WorkingArray[2]);
+			if (x > maxX) { maxX = x; };
+			if (x < minX) { minX = x; };
+			if (y > maxY) { maxY = y; };
+			if (y < minY) { minY = y; };
+			if (z > maxZ) { maxZ = z; };
+			if (z < minZ) { minZ = z; };
 			Vertices.Add(FVector(x, y, z));
 		}
 		else {
+			//Vertex Texture Coordinates
 			if (line.StartsWith("vt ")) {
 				line.RemoveFromStart("vt ");
-				line.ParseIntoArray(workingArray, *loopSeparator);
-				float x = FCString::Atof(*workingArray[0]);
-				float y = FCString::Atof(*workingArray[1]);
+				line.ParseIntoArray(WorkingArray, *LoopSeparator);
+				float x = FCString::Atof(*WorkingArray[0]);
+				float y = FCString::Atof(*WorkingArray[1]);
 				TextureCoords.Add(FVector2D(x, y));
 			}
 			else {
+				//Vertex Normals
 				if (line.StartsWith("vn ")) {
 					line.RemoveFromStart("vn ");
-					line.ParseIntoArray(workingArray, *loopSeparator);
-					float x = FCString::Atof(*workingArray[0]);
-					float y = FCString::Atof(*workingArray[1]);
-					float z = FCString::Atof(*workingArray[2]);
+					line.ParseIntoArray(WorkingArray, *LoopSeparator);
+					float x = FCString::Atof(*WorkingArray[0]);
+					float y = FCString::Atof(*WorkingArray[1]);
+					float z = FCString::Atof(*WorkingArray[2]);
 					Normals.Add(FVector(x, y, z));
 				}
 				else {
+					//Group
 					if (line.StartsWith("g ")) {
-						if (output != "") {
-							Sections.Add(output);
-							output = "";
+						if (Output != "") {
+							Sections.Add(Output);
+							Output = "";
 						}
 					}
 					else {
+						//Face
 						if (line.StartsWith("f ")) {
-							if (output == "") {
-								output.Append(CurrentMaterial);
-								output.Append("\n");
+							if (Output == "") {
+								Output.Append(CurrentMaterial);
+								Output.Append("\n");
 							}
 							TArray<FString> splitArray;
-							line.ParseIntoArray(splitArray, *loopSeparator);
+							line.ParseIntoArray(splitArray, *LoopSeparator);
+							//Polygon to Triangle Fan transformation
 							if (splitArray.Num() > 4) {
 								for (int i = 0; i < splitArray.Num() - 3; i++) {
-									output.Append("f " + splitArray[1] + " " + splitArray[i+2] + " " + splitArray[i+3]);
-									output.Append("\n");
+									Output.Append("f " + splitArray[1] + " " + splitArray[i+2] + " " + splitArray[i+3]);
+									Output.Append("\n");
 								}
 
 							}else {
-								output.Append(line);
-								output.Append("\n");
+								Output.Append(line);
+								Output.Append("\n");
 							}
 							
 						}
 						else {
+							//Material
 							if (line.StartsWith("usemtl ")) {
-								output.Append(line);
-								output.Append("\n");
+								Output.Append(line);
+								Output.Append("\n");
 								CurrentMaterial = line;
 							}
 						}
@@ -95,7 +101,7 @@ TArray<FString> UCADParser::ParseOBJ(FString Input, TArray<FVector>& Vertices, T
 			}
 		}
 	}
-	
+
 	float maxDiff = abs(maxX - minX);
 	if (abs(maxY - minY) > maxDiff) {
 		maxDiff = abs(maxY - minY);
@@ -105,14 +111,14 @@ TArray<FString> UCADParser::ParseOBJ(FString Input, TArray<FVector>& Vertices, T
 			maxDiff = abs(maxZ - minZ);
 		}
 	}
-	
+	//Centering vertices and scaling them to useable size
 	for (auto& vertex : Vertices) {
-		vertex.X = -(2 * ((vertex.X - minX) / (maxX - minX)) - 1) * (2540 *(abs(maxX - minX) / maxDiff));
-		vertex.Y = (2 * ((vertex.Y - minY) / (maxY - minY)) - 1) * (2540 * (abs(maxY - minY) / maxDiff));
-		vertex.Z = (2 * ((vertex.Z - minZ) / (maxZ - minZ)) - 1) * (2540 * (abs(maxZ - minZ) / maxDiff));
+		vertex.X = -(2 * ((vertex.X - minX) / (maxX - minX)) - 1) * (Scale *(abs(maxX - minX) / maxDiff));
+		vertex.Y = (2 * ((vertex.Y - minY) / (maxY - minY)) - 1) * (Scale * (abs(maxY - minY) / maxDiff));
+		vertex.Z = (2 * ((vertex.Z - minZ) / (maxZ - minZ)) - 1) * (Scale * (abs(maxZ - minZ) / maxDiff));
 	}
 
-	Sections.Add(output);
+	Sections.Add(Output);
 	return Sections;
 }
 
@@ -127,6 +133,7 @@ TMap<FString, FString>  UCADParser::ParseOBJMaterial(FString input)
 	FString LastKey;
 
 	for (auto line : inputArray) {
+		//Name
 		if (line.StartsWith("newmtl ")) {
 			line.RemoveFromStart("newmtl ");
 			if (Values != "") {
@@ -136,16 +143,19 @@ TMap<FString, FString>  UCADParser::ParseOBJMaterial(FString input)
 			LastKey = line;
 		}
 		else {
+			//Diffuse Colour
 			if (line.StartsWith("Kd ")) {
 				line.RemoveFromStart("Kd ");
 				Values.Append(line + " ");
 			}
 			else {
+				//Opacity
 				if (line.StartsWith("d ")) {
 					line.RemoveFromStart("d ");
 					Values.Append(line + " ");
 				}
 				else {
+					//Specular Exponent
 					if (line.StartsWith("Ns ")) {
 						line.RemoveFromStart("Ns ");
 						Values.Append(line + " ");
@@ -220,18 +230,14 @@ TArray<FString> UCADParser::ParseSTL(FString Input, TArray<FVector>& Vertices, T
 	TArray<FString> Sections;
 	FString output = "";
 	TArray<FString> workingArray;
-	int addedTriangles =0;
+	int AddedTriangles =0;
 	FString loopSeparator = " ";
-	float maxX = -FLT_MAX;
-	float minX = FLT_MAX;
-	float maxY = -FLT_MAX;
-	float minY = FLT_MAX;
-	float maxZ = -FLT_MAX;
-	float minZ = FLT_MAX;
-
+	float maxX = -FLT_MAX, maxY = -FLT_MAX, maxZ = -FLT_MAX;
+	float minX = FLT_MAX, minY = FLT_MAX, minZ = FLT_MAX;
 
 	for (auto line : inputArray) {
 		workingArray.Empty();
+		//Vertex
 		if (line.Contains("vertex")) {
 			line =line.TrimStart();
 			line.RemoveFromStart("vertex ");
@@ -249,22 +255,21 @@ TArray<FString> UCADParser::ParseSTL(FString Input, TArray<FVector>& Vertices, T
 			Vertices.Add(FVector(x, y, z));
 		}
 		else {
+			//Triangular Face
 			if (line.Contains("outer loop")) {
-				int t = addedTriangles;
-				FString x = "";
-				FString y = "";
-				FString z = "";
+				int t = AddedTriangles;
+				FString x,y,z = "";
 				x = x.FromInt(t * 3+1);
 				y = y.FromInt(t * 3 +2);
 				z = z.FromInt(t * 3 +3);
 				output.Append("f " + x + " " + y + " " + z);
 				output.Append("\n");
-				addedTriangles++;
+				AddedTriangles++;
 			}
 		}
 		
 	}
-
+	// Centering and Scaling
 	float maxDiff = abs(maxX - minX);
 	if (abs(maxY - minY) > maxDiff) {
 		maxDiff = abs(maxY - minY);
